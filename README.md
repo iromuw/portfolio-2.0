@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌟 Portfolio 2.0
 
-## Getting Started
+A modern personal portfolio website built with **Next.js** and **TypeScript**, featuring multi-language support (English & Traditional Chinese), responsive layout, and clean design.
 
-First, run the development server:
+## 🛠️ Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- [Next.js](https://nextjs.org/) — React framework for production
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS](https://tailwindcss.com/) — Utility-first CSS framework
+- [next-i18next](https://github.com/i18next/next-i18next) — Internationalization (i18n)
+- [ESLint](https://eslint.org/) & [Prettier](https://prettier.io/) — Code linting & formatting
+
+## 🌐 Internationalization (i18n)
+
+This project supports English and Traditional Chinese using `next-i18next`.
+
+- Language files are located in:  
+  `public/locales/en/common.json`  
+  `public/locales/zh/common.json`
+- Configuration files:  
+  `next-i18next.config.js`  
+  `next.config.ts`
+- Language switching via:  
+  ```ts
+  i18n.changeLanguage('zh'); 
+  ```
+
+## 📁 Project Structure
+
+```
+├── public/
+│   └── locales/
+│       ├── en/
+│       │   └── common.json
+│       └── zh/
+│           └── common.json
+├── src/
+│   ├── components/
+│   ├── pages/
+│   │   ├── index.tsx
+│   │   ├── about.tsx
+│   │   ├── contact.tsx
+│   │   └── projects.tsx
+│   └── utils/
+│       └── i18n.ts
+├── next-i18next.config.js
+├── next.config.ts
+├── tailwind.config.js
+├── eslint.config.mjs
+└── tsconfig.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎨 Design Credits
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+UI design is based on a Figma template created by [**Yanka Darelova**](https://www.darelova.com/).  
+Inspired by her clean aesthetic and modern visual style.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📚 References
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js Documentation](https://nextjs.org/docs)
+- [next-i18next Guide](https://github.com/i18next/next-i18next)
+- [Tailwind CSS Docs](https://tailwindcss.com/docs)
