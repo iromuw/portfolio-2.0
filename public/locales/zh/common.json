@@ -1,6 +1,23 @@
 {
-  "title": "歡迎",
-  "description": "這是一段中文訊息",
-  "changeToChinese": "切換成中文",
-  "changeToEnglish": "切換成英文"
+  "hello": {
+    "greeting": "大家好，我是",
+    "role": "前端工程師",
+    "gameHint": "// 完成遊戲以繼續",
+    "githubHint": "// 在 Github 找到我：",
+    "useKeyboard": "// 使用鍵盤",
+    "arrowsToPlay": "// 方向鍵遊玩",
+    "foodLeft": "// 剩餘食物",
+    "startGame": "start-game",
+    "reset": "reset",
+    "skip": "skip",
+    "score": "score:",
+    "gameOver": "// 遊戲結束",
+    "allFoodEaten": "// 食物全部吃完！"
+  },
+  "footer": {
+    "findMeIn": "找到我："
+  },
+  "nav": {
+    "switchLanguage": "切換語言"
+  }
 }
