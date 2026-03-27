@@ -8,11 +8,15 @@
     "arrowsToPlay": "// arrows to play",
     "foodLeft": "// food left",
     "startGame": "start-game",
+    "startAgain": "start-again",
+    "playAgain": "play-again",
+    "pressStart": "// press start to play",
     "reset": "reset",
     "skip": "skip",
     "score": "score:",
-    "gameOver": "// game over",
-    "allFoodEaten": "// all food eaten!"
+    "gameOver": "GAME OVER!",
+    "allFoodEaten": "WELL DONE!",
+    "wellDoneHint": "Nice! Now explore my projects"
   },
   "footer": {
     "findMeIn": "find me in:"

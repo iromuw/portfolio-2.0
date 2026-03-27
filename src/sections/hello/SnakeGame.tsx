@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'next-i18next'
 
 type Direction = 'UP' | 'DOWN' | 'LEFT' | 'RIGHT'
@@ -19,6 +19,10 @@ const INITIAL_SNAKE: Point[] = [
   { x: 3, y: 9 },
 ]
 const INITIAL_FOOD: Point = { x: 9, y: 9 }
+
+const OPPOSITES: Record<Direction, Direction> = {
+  UP: 'DOWN', DOWN: 'UP', LEFT: 'RIGHT', RIGHT: 'LEFT',
+}
 
 function move(p: Point, dir: Direction): Point {
   if (dir === 'UP') return { x: p.x, y: p.y - 1 }
@@ -42,7 +46,13 @@ function roundRect(
   ctx.fill()
 }
 
-function drawCanvas(canvas: HTMLCanvasElement | null, snake: Point[], food: Point) {
+function drawCanvas(
+  canvas: HTMLCanvasElement | null,
+  snake: Point[],
+  food: Point,
+  score: number,
+  gameState: GameState,
+) {
   if (!canvas) return
   const ctx = canvas.getContext('2d')
   if (!ctx) return
@@ -81,6 +91,15 @@ function drawCanvas(canvas: HTMLCanvasElement | null, snake: Point[], food: Poin
     ctx.fillStyle = idx === 0 ? 'rgba(129,140,248,0.95)' : 'rgba(99,241,203,0.85)'
     roundRect(ctx, p.x * CELL + 2, p.y * CELL + 2, CELL - 4, CELL - 4, 6)
   })
+
+  // score overlay during running
+  if (gameState === 'running') {
+    ctx.globalAlpha = 0.75
+    ctx.fillStyle = 'rgba(148,163,184,0.9)'
+    ctx.font = '10px monospace'
+    ctx.fillText(`score: ${score} / ${MAX_FOOD}`, 5, 12)
+    ctx.globalAlpha = 1
+  }
 }
 
 export default function SnakeGame({
@@ -93,25 +112,23 @@ export default function SnakeGame({
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
   const rafRef = useRef<number | null>(null)
   const lastTickRef = useRef<number>(0)
-  // Synchronous refs so the RAF loop doesn't read stale closure values
+
+  // All mutable game data lives in refs — never inside setState updaters.
+  // This prevents React StrictMode from double-invoking side effects.
   const runningRef = useRef(false)
+  const snakeRef = useRef<Point[]>(INITIAL_SNAKE.map((p) => ({ ...p })))
+  const foodRef = useRef<Point>({ ...INITIAL_FOOD })
+  const dirRef = useRef<Direction>('RIGHT')
+  const nextDirRef = useRef<Direction>('RIGHT') // buffered input
   const scoreRef = useRef(0)
+  const speedMsRef = useRef(200)
 
   const [gameState, setGameState] = useState<GameState>('idle')
   const [countdown, setCountdown] = useState(3)
-  const [speedMs, setSpeedMs] = useState(120)
   const [score, setScore] = useState(0)
-  const [snake, setSnake] = useState<Point[]>(INITIAL_SNAKE)
-  const [dir, setDir] = useState<Direction>('RIGHT')
-  const [food, setFood] = useState<Point>(INITIAL_FOOD)
-
-  const occupied = useMemo(() => {
-    const s = new Set<string>()
-    snake.forEach((p) => s.add(`${p.x},${p.y}`))
-    return s
-  }, [snake])
 
   const spawnFood = (): Point => {
+    const occupied = new Set(snakeRef.current.map((p) => `${p.x},${p.y}`))
     for (let i = 0; i < 200; i++) {
       const p = {
         x: Math.floor(Math.random() * GRID_W),
@@ -122,36 +139,23 @@ export default function SnakeGame({
     return { x: 0, y: 0 }
   }
 
-  /** Transition game state and keep runningRef in sync. */
   const go = (state: GameState) => {
     runningRef.current = state === 'running'
     setGameState(state)
   }
 
-  /** Full reset → back to idle (or a given next state). */
-  const doReset = () => {
-    runningRef.current = false
-    scoreRef.current = 0
-    setGameState('idle')
-    setScore(0)
-    setSpeedMs(120)
-    setSnake(INITIAL_SNAKE)
-    setDir('RIGHT')
-    setFood(INITIAL_FOOD)
-    setCountdown(3)
-  }
-
-  /** Start / restart: reset positions then begin countdown. */
   const handleStart = () => {
     runningRef.current = false
     scoreRef.current = 0
+    speedMsRef.current = 200
+    snakeRef.current = INITIAL_SNAKE.map((p) => ({ ...p }))
+    foodRef.current = { ...INITIAL_FOOD }
+    dirRef.current = 'RIGHT'
+    nextDirRef.current = 'RIGHT'
     setScore(0)
-    setSpeedMs(120)
-    setSnake(INITIAL_SNAKE)
-    setDir('RIGHT')
-    setFood(INITIAL_FOOD)
     setCountdown(3)
     setGameState('countdown')
+    onFoodLeftChange?.(MAX_FOOD)
   }
 
   // Notify parent of remaining food
@@ -171,79 +175,74 @@ export default function SnakeGame({
     return () => clearTimeout(timer)
   }, [gameState, countdown])
 
-  // Keyboard controls (only while running)
+  // Keyboard controls — always active, direction buffered into nextDirRef
   useEffect(() => {
-    if (gameState !== 'running') return
-    const setDirSafe = (next: Direction) => {
-      setDir((cur) => {
-        if (cur === 'UP' && next === 'DOWN') return cur
-        if (cur === 'DOWN' && next === 'UP') return cur
-        if (cur === 'LEFT' && next === 'RIGHT') return cur
-        if (cur === 'RIGHT' && next === 'LEFT') return cur
-        return next
-      })
-    }
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'ArrowUp') { e.preventDefault(); setDirSafe('UP') }
-      if (e.key === 'ArrowDown') { e.preventDefault(); setDirSafe('DOWN') }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); setDirSafe('LEFT') }
-      if (e.key === 'ArrowRight') { e.preventDefault(); setDirSafe('RIGHT') }
+      let next: Direction | null = null
+      if (e.key === 'ArrowUp') next = 'UP'
+      else if (e.key === 'ArrowDown') next = 'DOWN'
+      else if (e.key === 'ArrowLeft') next = 'LEFT'
+      else if (e.key === 'ArrowRight') next = 'RIGHT'
+      if (next && next !== OPPOSITES[dirRef.current]) {
+        e.preventDefault()
+        nextDirRef.current = next
+      }
     }
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [gameState, dir])
+  }, [])
 
-  // Main game loop (RAF)
+  // Main game loop (RAF) — only restarts when gameState changes
   useEffect(() => {
     const step = () => {
-      if (!runningRef.current) return
-      setSnake((prev) => {
-        const head = prev[0]
-        const next = move(head, dir)
+      // Apply buffered direction (prevents 180° reversal)
+      dirRef.current = nextDirRef.current
 
-        // wall collision
-        if (next.x < 0 || next.y < 0 || next.x >= GRID_W || next.y >= GRID_H) {
-          go('gameover')
-          return prev
-        }
-        // self collision
-        if (prev.some((p) => p.x === next.x && p.y === next.y)) {
-          go('gameover')
-          return prev
-        }
+      const prev = snakeRef.current
+      const head = prev[0]
+      const next = move(head, dirRef.current)
 
-        const ate = next.x === food.x && next.y === food.y
-        const newSnake = [next, ...prev]
-        if (!ate) newSnake.pop()
+      // Wall collision
+      if (next.x < 0 || next.y < 0 || next.x >= GRID_W || next.y >= GRID_H) {
+        go('gameover')
+        return
+      }
+      // Self collision
+      if (prev.some((p) => p.x === next.x && p.y === next.y)) {
+        go('gameover')
+        return
+      }
 
-        if (ate) {
-          scoreRef.current += 1
-          setScore(scoreRef.current)
-          if (scoreRef.current >= MAX_FOOD) {
-            go('won')
-            return newSnake // don't spawn new food
-          }
-          setSpeedMs((ms) => Math.max(70, ms - 3))
-          setFood(spawnFood())
+      const ate = next.x === foodRef.current.x && next.y === foodRef.current.y
+      const newSnake = [next, ...prev]
+      if (!ate) newSnake.pop()
+      snakeRef.current = newSnake
+
+      if (ate) {
+        scoreRef.current += 1
+        setScore(scoreRef.current)
+        if (scoreRef.current >= MAX_FOOD) {
+          go('won')
+          return
         }
-        return newSnake
-      })
+        speedMsRef.current = Math.max(100, speedMsRef.current - 10)
+        foodRef.current = spawnFood()
+      }
     }
 
     const loop = (ts: number) => {
-      if (runningRef.current && ts - lastTickRef.current >= speedMs) {
+      if (runningRef.current && ts - lastTickRef.current >= speedMsRef.current) {
         lastTickRef.current = ts
         step()
       }
-      drawCanvas(canvasRef.current, snake, food)
+      drawCanvas(canvasRef.current, snakeRef.current, foodRef.current, scoreRef.current, gameState)
       rafRef.current = requestAnimationFrame(loop)
     }
     rafRef.current = requestAnimationFrame(loop)
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gameState, speedMs, snake, food, dir])
+  }, [gameState])
 
   return (
     <div className="relative w-fit overflow-hidden rounded-xl bg-[#080c14]">
@@ -259,9 +258,10 @@ export default function SnakeGame({
       {gameState !== 'running' && (
         <div className="absolute inset-0 flex flex-col rounded-xl bg-[#060c18]/75">
 
-          {/* IDLE: start-game button pinned to bottom center */}
+          {/* IDLE: hint + start-game button pinned to bottom center */}
           {gameState === 'idle' && (
-            <div className="flex flex-1 items-end justify-center pb-6">
+            <div className="flex flex-1 flex-col items-center justify-end gap-3 pb-6">
+              <p className="font-mono text-xs text-slate-500">{t('hello.pressStart')}</p>
               <button
                 type="button"
                 onClick={handleStart}
@@ -284,36 +284,33 @@ export default function SnakeGame({
           {/* GAME OVER */}
           {gameState === 'gameover' && (
             <div className="flex flex-1 flex-col items-center justify-center gap-5">
-              <p className="font-mono text-sm text-slate-400">{'// game over'}</p>
-              <div className="flex gap-3">
-                <button
-                  type="button"
-                  onClick={handleStart}
-                  className="rounded-md bg-amber-400 px-6 py-2 font-mono text-sm font-medium text-[#0b1220] transition hover:bg-amber-300"
-                >
-                  {t('hello.startGame')}
-                </button>
-                <button
-                  type="button"
-                  onClick={doReset}
-                  className="rounded-md border border-cyan-500/25 bg-[#0d1525] px-5 py-2 font-mono text-sm text-slate-400 transition hover:bg-white/5"
-                >
-                  {t('hello.reset')}
-                </button>
+              <div className="flex flex-col items-center gap-1">
+                <p className="font-mono text-lg font-bold text-rose-400">{t('hello.gameOver')}</p>
+                <p className="font-mono text-xs text-slate-500">{`score: ${score} / ${MAX_FOOD}`}</p>
               </div>
+              <button
+                type="button"
+                onClick={handleStart}
+                className="rounded-md bg-amber-400 px-6 py-2 font-mono text-sm font-medium text-[#0b1220] transition hover:bg-amber-300"
+              >
+                {t('hello.startAgain')}
+              </button>
             </div>
           )}
 
           {/* WON */}
           {gameState === 'won' && (
             <div className="flex flex-1 flex-col items-center justify-center gap-5">
-              <p className="font-mono text-sm text-cyan-300">{t('hello.allFoodEaten')}</p>
+              <div className="flex flex-col items-center gap-1">
+                <p className="font-mono text-lg font-bold text-cyan-300">{t('hello.allFoodEaten')}</p>
+                <p className="font-mono text-xs text-slate-400">{t('hello.wellDoneHint')}</p>
+              </div>
               <button
                 type="button"
                 onClick={handleStart}
                 className="rounded-md bg-amber-400 px-8 py-2.5 font-mono text-sm font-medium text-[#0b1220] transition hover:bg-amber-300"
               >
-                {t('hello.startGame')}
+                {t('hello.playAgain')}
               </button>
             </div>
           )}

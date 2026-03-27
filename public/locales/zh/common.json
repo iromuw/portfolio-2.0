@@ -8,11 +8,15 @@
     "arrowsToPlay": "// 方向鍵遊玩",
     "foodLeft": "// 剩餘食物",
     "startGame": "start-game",
+    "startAgain": "再試一次",
+    "playAgain": "再玩一次",
+    "pressStart": "// 按下開始鍵",
     "reset": "reset",
     "skip": "skip",
     "score": "score:",
-    "gameOver": "// 遊戲結束",
-    "allFoodEaten": "// 食物全部吃完！"
+    "gameOver": "遊戲結束！",
+    "allFoodEaten": "做得好！",
+    "wellDoneHint": "太棒了！快來看看我的作品"
   },
   "footer": {
     "findMeIn": "找到我："
