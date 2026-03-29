@@ -21,7 +21,7 @@ async function processSnippet(raw: RawSnippet): Promise<HighlightedSnippet> {
 
 async function processFileNode(raw: RawFileNode): Promise<HighlightedFileNode> {
   const [contentHtml, snippets] = await Promise.all([
-    highlightCode(raw.content, 'typescript'),
+    highlightCode(raw.content, raw.lang ?? 'typescript'),
     Promise.all(raw.snippets.map(processSnippet)),
   ])
   return { type: 'file', iconColor: raw.iconColor, contentHtml, snippets }

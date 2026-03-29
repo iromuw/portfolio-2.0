@@ -5,20 +5,22 @@ export const acf: RawFileNode = {
   type: 'file',
   iconColor: 'bg-slate-500',
   content: `/**
- * Web Developer (Contract)
- * Australian Community Fund
- * Jan 2024 – Mar 2024
+ * UI/UX Designer (Volunteer)
+ * Australia Career Forum
+ * Oct 2022 – Aug 2023
  *
- * Developed and maintained the organization's website to enhance online presence and engagement.
+ * Contributed to UX improvements for a career development platform,
+ * aligning design decisions with frontend implementation.
  *
- * Key responsibilities:
- * - Created custom WordPress themes and plugins using PHP to meet specific client needs.
- * - Implemented responsive design to ensure optimal viewing experience across devices.
- * - Collaborated with the marketing team to integrate SEO best practices and improve site visibility.
+ * Key contributions:
+ * - Designed and prototyped responsive user interfaces with a focus
+ *   on usability and accessibility.
  *
- * Achievements:
- * - Successfully launched a revamped website that increased traffic and user engagement.
- * - Received positive feedback from stakeholders for improved functionality and design.
+ * - Collaborated with frontend engineers to ensure technically feasible
+ *   and efficient implementations.
+ *
+ * - Produced structured design documentation to support handoff
+ *   and project delivery.
  */`,
-  snippets: ACF_SNIPPETS,
+  snippets: [ACF_SNIPPETS],
 }

@@ -1,4 +1,14 @@
 import type { RawSnippet } from '@/sections/about/types'
 
-// Placeholder — add experience snippets here when content is ready
-export const ACF_SNIPPETS: RawSnippet[] = []
+export const ACF_SNIPPETS: RawSnippet = {
+  username: 'iromuw',
+  createdAt: '7 months ago',
+  stars: 0,
+  lang: 'typescript',
+  code: `// Experience Highlight
+const acf = {
+  role: "UI/UX Designer (Volunteer)",
+  focus: ["UX", "Design system"],
+  highlight: "Bridged design & frontend",
+};`,
+}

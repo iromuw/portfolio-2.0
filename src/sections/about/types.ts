@@ -11,6 +11,8 @@ export interface ContactData {
 
 // ── Raw types — authored content, pre-Shiki ───────────────────────────────────
 
+export type ContentLang = 'typescript' | 'javascript' | 'tsx' | 'jsx' | 'bash' | 'json' | 'md'
+
 export interface RawSnippet {
   username: string
   createdAt: string
@@ -24,6 +26,8 @@ export interface RawFileNode {
   type: 'file'
   iconColor: string
   content: string
+  /** Shiki language for content highlighting. Defaults to 'typescript'. */
+  lang?: ContentLang
   snippets: RawSnippet[]
 }
 

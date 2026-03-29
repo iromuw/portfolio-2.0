@@ -25,5 +25,5 @@ export const tpi: RawFileNode = {
  * - Collaborated in Agile teams, participating in sprint planning,
  *   code reviews, and CI/CD workflows using GitLab.
  */`,
-  snippets: TPI_SNIPPETS,
+  snippets: [TPI_SNIPPETS],
 }

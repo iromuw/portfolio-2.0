@@ -9,7 +9,7 @@ function getHighlighter(): Promise<HighlighterInstance> {
   if (!highlighterPromise) {
     highlighterPromise = createHighlighter({
       themes: ['github-dark-dimmed'],
-      langs: ['typescript', 'javascript', 'tsx', 'jsx', 'bash', 'json'],
+      langs: ['typescript', 'javascript', 'tsx', 'jsx', 'bash', 'json', 'md'],
     })
   }
   return highlighterPromise
