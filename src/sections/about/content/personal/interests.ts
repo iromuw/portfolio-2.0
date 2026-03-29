@@ -1,5 +1,5 @@
-import type { RawFileNode } from '../../types'
-import { BIO_SNIPPET } from '../../snippets'
+import type { RawFileNode } from '@/sections/about/types'
+import { BIO_SNIPPET } from '@/sections/about/snippets'
 
 export const interests: RawFileNode = {
   type: 'file',

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { useTranslation } from 'next-i18next'
-import type { HighlightedSnippet } from '../types'
+import type { HighlightedSnippet } from '@/sections/about/types'
 
 interface SnippetCardProps {
   snippet: HighlightedSnippet

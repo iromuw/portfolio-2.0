@@ -8,7 +8,7 @@ import type {
   HighlightedSnippet,
   HighlightedFileNode,
   HighlightedFolderNode,
-} from '../types'
+} from '@/sections/about/types'
 
 async function processSnippet(raw: RawSnippet): Promise<HighlightedSnippet> {
   return {

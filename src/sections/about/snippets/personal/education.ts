@@ -1,4 +1,4 @@
-import type { RawSnippet } from '../../types'
+import type { RawSnippet } from '@/sections/about/types'
 
 export const MASTER_SNIPPETS: RawSnippet = {
   username: 'iromuw',

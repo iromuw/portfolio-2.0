@@ -1,5 +1,5 @@
-import type { RawFileNode } from '../../../types'
-import { ACF_SNIPPETS } from '../../../snippets/professional/experience/acf'
+import type { RawFileNode } from '@/sections/about/types'
+import { ACF_SNIPPETS } from '@/sections/about/snippets/professional/experience/acf'
 
 export const acf: RawFileNode = {
   type: 'file',

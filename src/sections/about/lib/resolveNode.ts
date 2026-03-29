@@ -3,7 +3,7 @@ import type {
   HighlightedAboutData,
   HighlightedTreeNode,
   HighlightedFolderNode,
-} from '../types'
+} from '@/sections/about/types'
 
 /**
  * Resolves a dot-free file path (e.g. "bio" or "education/master")

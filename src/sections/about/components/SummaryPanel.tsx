@@ -1,4 +1,4 @@
-import type { HighlightedSnippet } from '../types'
+import type { HighlightedSnippet } from '@/sections/about/types'
 import SnippetCard from './SnippetCard'
 
 interface SummaryPanelProps {

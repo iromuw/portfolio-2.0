@@ -1,6 +1,6 @@
 import { User, Briefcase } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
-import type { SectionId } from '../types'
+import type { SectionId } from '@/sections/about/types'
 
 const SECTIONS: { id: SectionId; Icon: LucideIcon }[] = [
   { id: 'personal-info', Icon: User },

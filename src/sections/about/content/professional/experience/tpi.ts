@@ -1,24 +1,29 @@
-import type { RawFileNode } from '../../../types'
-import { TPI_SNIPPETS } from '../../../snippets/professional/experience/tpi'
+import type { RawFileNode } from '@/sections/about/types'
+import { TPI_SNIPPETS } from '@/sections/about/snippets/professional/experience/tpi'
 
 export const tpi: RawFileNode = {
   type: 'file',
   iconColor: 'bg-slate-500',
   content: `/**
- * Software Engineer (Contract)
- * The Product Institute
- * Mar 2024 – Present
+ * Frontend Engineer
+ * TPI Software
+ * Jan 2020 – Jun 2022
  *
- * Contributing to the development of a SaaS platform for product management education.
+ * Worked on large-scale enterprise systems in fintech and healthcare,
+ * focusing on building scalable and maintainable frontend applications.
  *
- * Key responsibilities:
- * - Building and maintaining frontend features using React and TypeScript.
- * - Collaborating with backend developers to integrate APIs and ensure seamless data flow.
- * - Implementing responsive design principles to enhance user experience across devices.
+ * Key contributions:
+ * - Built reusable UI components using Vue.js and TypeScript,
+ *   improving consistency and development efficiency across projects.
  *
- * Achievements:
- * - Successfully launched multiple features that improved user engagement and retention.
- * - Received positive feedback from users for intuitive UI and smooth performance.
+ * - Implemented complex state management and business logic to support
+ *   high-volume workflows and accurate data rendering.
+ *
+ * - Integrated REST APIs to enable reliable data flow between frontend
+ *   and backend services.
+ *
+ * - Collaborated in Agile teams, participating in sprint planning,
+ *   code reviews, and CI/CD workflows using GitLab.
  */`,
   snippets: TPI_SNIPPETS,
 }

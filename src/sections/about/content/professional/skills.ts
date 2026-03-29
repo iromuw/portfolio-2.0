@@ -1,4 +1,4 @@
-import type { RawFileNode } from '../../types'
+import type { RawFileNode } from '@/sections/about/types'
 
 export const skills: RawFileNode = {
   type: 'file',

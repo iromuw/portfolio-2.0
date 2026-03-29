@@ -5,7 +5,7 @@ import type {
   HighlightedFolderNode,
   HighlightedTreeNode,
   SectionId,
-} from '../types'
+} from '@/sections/about/types'
 
 // ── Leaf file row ─────────────────────────────────────────────────────────────
 

@@ -1,5 +1,5 @@
-import type { RawFolderNode } from '../../types'
-import { MASTER_SNIPPETS, TECHNICAL_SNIPPETS, BACHELOR_SNIPPETS, ACHIEVEMENT_SNIPPETS } from '../../snippets/personal/education'
+import type { RawFolderNode } from '@/sections/about/types'
+import { MASTER_SNIPPETS, TECHNICAL_SNIPPETS, BACHELOR_SNIPPETS, ACHIEVEMENT_SNIPPETS } from '@/sections/about/snippets/personal/education'
 
 export const education: RawFolderNode = {
   type: 'folder',

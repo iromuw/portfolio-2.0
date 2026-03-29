@@ -1,4 +1,4 @@
-import type { RawAboutData, ContactData } from '../types'
+import type { RawAboutData, ContactData } from '@/sections/about/types'
 import { bio } from './personal/bio'
 // import { interests } from './personal/interests'
 import { education } from './personal/education'
