@@ -18,9 +18,11 @@ export default function AboutSection({ data }: AboutSectionProps) {
   const [expandedFolders, setExpandedFolders] = useState<string[]>([])
 
   const handleSectionChange = (section: SectionId) => {
+    const defaultFile = DEFAULT_FILES[section]
+    const parentFolder = defaultFile.split('/')[1] ? defaultFile.split('/')[0] : null
     setActiveSection(section)
-    setActiveFile(DEFAULT_FILES[section])
-    setExpandedFolders([])
+    setActiveFile(defaultFile)
+    setExpandedFolders(parentFolder ? [parentFolder] : [])
   }
 
   const handleFolderToggle = (folderId: string) => {
