@@ -1,12 +1,23 @@
-import { GetStaticProps } from 'next'
+import type { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import type { Project } from '@/sections/projects/data/types'
+import ProjectsSection from '@/sections/projects'
 
-export default function ProjectsPage() {
-  return null
+interface ProjectsPageProps {
+  projects: Project[]
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => ({
-  props: {
-    ...(await serverSideTranslations(locale ?? 'en', ['common'])),
-  },
-})
+export default function ProjectsPage({ projects }: ProjectsPageProps) {
+  return <ProjectsSection projects={projects} />
+}
+
+export const getStaticProps: GetStaticProps<ProjectsPageProps> = async ({ locale }) => {
+  const { PROJECTS } = await import('@/sections/projects/data')
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale ?? 'en', ['common'])),
+      projects: PROJECTS,
+    },
+  }
+}

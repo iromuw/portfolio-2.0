@@ -25,6 +25,11 @@
     "stars": "星",
     "createdAt": "建立於"
   },
+  "projects": {
+    "filterByTag": "依標籤篩選",
+    "viewProject": "查看專案",
+    "noResults": "// 沒有符合篩選條件的專案"
+  },
   "footer": {
     "findMeIn": "找到我："
   },

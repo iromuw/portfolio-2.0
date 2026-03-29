@@ -58,11 +58,11 @@ function drawCanvas(
   if (!ctx) return
 
   ctx.clearRect(0, 0, BOARD_W, BOARD_H)
-  ctx.fillStyle = '#081024'
+  ctx.fillStyle = '#060d1c'
   ctx.fillRect(0, 0, BOARD_W, BOARD_H)
 
-  // grid
-  ctx.globalAlpha = 0.18
+  // grid — subtle, low contrast
+  ctx.globalAlpha = 0.10
   ctx.strokeStyle = '#ffffff'
   ctx.lineWidth = 1
   for (let i = 0; i <= GRID_W; i++) {
@@ -79,28 +79,32 @@ function drawCanvas(
   }
   ctx.globalAlpha = 1
 
-  // food
-  ctx.fillStyle = 'rgba(45,212,191,0.9)'
-  ctx.shadowColor = 'rgba(45,212,191,0.5)'
+  // food — teal accent with glow
+  ctx.fillStyle = 'rgba(64,224,208,0.88)'
+  ctx.shadowColor = 'rgba(64,224,208,0.55)'
   ctx.shadowBlur = 10
   roundRect(ctx, food.x * CELL + 3, food.y * CELL + 3, CELL - 6, CELL - 6, 6)
   ctx.shadowBlur = 0
 
-  // snake
+  // snake — indigo head, teal body
   snake.forEach((p, idx) => {
-    ctx.fillStyle = idx === 0 ? 'rgba(129,140,248,0.95)' : 'rgba(99,241,203,0.85)'
+    ctx.fillStyle = idx === 0 ? 'rgba(129,140,248,0.95)' : 'rgba(64,224,208,0.75)'
     roundRect(ctx, p.x * CELL + 2, p.y * CELL + 2, CELL - 4, CELL - 4, 6)
   })
 
-  // score overlay during running
+  // score overlay — only during running, low contrast
   if (gameState === 'running') {
-    ctx.globalAlpha = 0.75
-    ctx.fillStyle = 'rgba(148,163,184,0.9)'
+    ctx.globalAlpha = 0.5
+    ctx.fillStyle = 'rgba(148,163,184,1)'
     ctx.font = '10px monospace'
     ctx.fillText(`score: ${score} / ${MAX_FOOD}`, 5, 12)
     ctx.globalAlpha = 1
   }
 }
+
+// Shared ghost button style — teal accent, ghost/outline treatment
+const GHOST_BTN =
+  'rounded-md border border-[#40E0D0]/35 bg-[#40E0D0]/[0.08] px-8 py-2.5 font-mono text-sm font-medium text-[#40E0D0] transition-all duration-200 select-none hover:bg-[#40E0D0]/[0.15] hover:border-[#40E0D0]/60 hover:shadow-[0_0_16px_rgba(64,224,208,0.20)] active:scale-[0.97] active:shadow-[0_0_20px_rgba(64,224,208,0.28)]'
 
 export default function SnakeGame({
   onFoodLeftChange,
@@ -245,7 +249,7 @@ export default function SnakeGame({
   }, [gameState])
 
   return (
-    <div className="relative w-fit overflow-hidden rounded-xl bg-[#080c14]">
+    <div className="relative w-fit overflow-hidden rounded-xl bg-[#060d1c]">
       {/* Game canvas */}
       <canvas
         ref={canvasRef}
@@ -254,62 +258,54 @@ export default function SnakeGame({
         className="block"
       />
 
-      {/* State overlay — hidden only when running */}
+      {/* State overlay — hidden only while running */}
       {gameState !== 'running' && (
-        <div className="absolute inset-0 flex flex-col rounded-xl bg-[#060c18]/75">
+        <div className="absolute inset-0 flex flex-col rounded-xl bg-[#060e1c]/82 backdrop-blur-[1.5px]">
 
-          {/* IDLE: hint + start-game button pinned to bottom center */}
+          {/* IDLE — calm, low contrast; button is the sole focal point */}
           {gameState === 'idle' && (
             <div className="flex flex-1 flex-col items-center justify-end gap-3 pb-6">
-              <p className="font-mono text-xs text-slate-500">{t('hello.pressStart')}</p>
-              <button
-                type="button"
-                onClick={handleStart}
-                className="min-w-[120px] rounded-md bg-amber-400 px-8 py-2.5 font-mono text-sm font-medium text-[#0b1220] transition hover:bg-amber-300"
-              >
+              <p className="font-mono text-xs text-slate-600">{t('hello.pressStart')}</p>
+              <button type="button" onClick={handleStart} className={GHOST_BTN}>
                 {t('hello.startGame')}
               </button>
             </div>
           )}
 
-          {/* COUNTDOWN: big number centered */}
+          {/* COUNTDOWN — single focal element, teal accent */}
           {gameState === 'countdown' && (
             <div className="flex flex-1 items-center justify-center">
-              <span className="font-mono text-7xl font-bold tabular-nums text-cyan-300 drop-shadow-[0_0_20px_rgba(34,211,238,0.6)]">
+              <span className="font-mono text-7xl font-bold tabular-nums text-[#40E0D0] drop-shadow-[0_0_24px_rgba(64,224,208,0.45)]">
                 {countdown}
               </span>
             </div>
           )}
 
-          {/* GAME OVER */}
+          {/* GAME OVER — rose tone distinguishes from active; dimmed overlay, rose headline */}
           {gameState === 'gameover' && (
             <div className="flex flex-1 flex-col items-center justify-center gap-5">
-              <div className="flex flex-col items-center gap-1">
-                <p className="font-mono text-lg font-bold text-rose-400">{t('hello.gameOver')}</p>
-                <p className="font-mono text-xs text-slate-500">{`score: ${score} / ${MAX_FOOD}`}</p>
+              <div className="flex flex-col items-center gap-1.5">
+                <p className="font-mono text-lg font-bold tracking-wide text-rose-400">
+                  {t('hello.gameOver')}
+                </p>
+                <p className="font-mono text-xs text-slate-600">{`score: ${score} / ${MAX_FOOD}`}</p>
               </div>
-              <button
-                type="button"
-                onClick={handleStart}
-                className="rounded-md bg-amber-400 px-6 py-2 font-mono text-sm font-medium text-[#0b1220] transition hover:bg-amber-300"
-              >
+              <button type="button" onClick={handleStart} className={`${GHOST_BTN} px-6 py-2`}>
                 {t('hello.startAgain')}
               </button>
             </div>
           )}
 
-          {/* WON */}
+          {/* WON — teal headline mirrors the accent; celebratory but restrained */}
           {gameState === 'won' && (
             <div className="flex flex-1 flex-col items-center justify-center gap-5">
-              <div className="flex flex-col items-center gap-1">
-                <p className="font-mono text-lg font-bold text-cyan-300">{t('hello.allFoodEaten')}</p>
-                <p className="font-mono text-xs text-slate-400">{t('hello.wellDoneHint')}</p>
+              <div className="flex flex-col items-center gap-1.5">
+                <p className="font-mono text-lg font-bold text-[#40E0D0] drop-shadow-[0_0_12px_rgba(64,224,208,0.35)]">
+                  {t('hello.allFoodEaten')}
+                </p>
+                <p className="font-mono text-xs text-slate-500">{t('hello.wellDoneHint')}</p>
               </div>
-              <button
-                type="button"
-                onClick={handleStart}
-                className="rounded-md bg-amber-400 px-8 py-2.5 font-mono text-sm font-medium text-[#0b1220] transition hover:bg-amber-300"
-              >
+              <button type="button" onClick={handleStart} className={GHOST_BTN}>
                 {t('hello.playAgain')}
               </button>
             </div>

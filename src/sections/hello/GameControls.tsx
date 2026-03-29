@@ -3,7 +3,7 @@ import { MAX_FOOD } from './SnakeGame'
 
 function KeyCap({ label }: { label: string }) {
   return (
-    <div className="flex h-9 w-9 items-center justify-center rounded-lg border border-cyan-500/20 bg-[#0d1525] text-slate-400 shadow-[0_1px_0_rgba(34,211,238,0.06)_inset,0_4px_12px_rgba(0,0,0,0.22)]">
+    <div className="flex h-9 w-9 select-none items-center justify-center rounded-lg border border-white/[0.07] bg-[#0d1525] text-slate-400 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_4px_12px_rgba(0,0,0,0.3)]">
       <span className="text-sm">{label}</span>
     </div>
   )
@@ -40,10 +40,10 @@ function FoodLeft({ remaining }: { remaining: number }) {
           <span
             key={i}
             className={[
-              'h-2 w-2 rounded-full',
+              'h-2 w-2 rounded-full transition-all duration-200',
               i < remaining
-                ? 'bg-cyan-400/90 shadow-[0_0_8px_rgba(34,211,238,0.5)]'
-                : 'bg-slate-700/80',
+                ? 'bg-[#f5d44d]/85 shadow-[0_0_8px_rgba(64,224,208,0.55)]'
+                : 'bg-white/[0.09]',
             ].join(' ')}
             aria-hidden
           />

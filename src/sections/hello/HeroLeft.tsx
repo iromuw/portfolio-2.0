@@ -19,7 +19,7 @@ export default function HeroLeft() {
         <div className="text-slate-500">{t('hello.githubHint')}</div>
         <div className="flex flex-wrap items-baseline gap-2">
           <span className="text-indigo-400">const</span>
-          <span className="text-emerald-400">githubLink</span>
+          <span className="text-teal-400">githubLink</span>
           <span className="text-slate-400">=</span>
           <a
             className="text-rose-400 underline decoration-rose-300/70 underline-offset-4 hover:text-rose-300/70"

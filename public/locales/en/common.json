@@ -25,6 +25,11 @@
     "stars": "stars",
     "createdAt": "Created"
   },
+  "projects": {
+    "filterByTag": "filter by tag",
+    "viewProject": "view project",
+    "noResults": "// no projects match the selected filters"
+  },
   "footer": {
     "findMeIn": "find me in:"
   },
