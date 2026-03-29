@@ -1,4 +1,4 @@
-import type { RawSnippet } from '../types'
+import type { RawSnippet } from '../../types'
 
 export const STATUS_SNIPPET: RawSnippet = {
   username: 'iromuw',
