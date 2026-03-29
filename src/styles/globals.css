@@ -18,6 +18,11 @@ body {
 /* ── Shiki: content panel ────────────────────────────────────────────────────
   Removes Shiki's inline background so the panel inherits our theme color.
   Each `.line` span is made block-level so line numbers align correctly.       */
+
+.hl-content {
+  filter: brightness(0.9) saturate(0.7);
+}
+
 .hl-content pre {
   background: transparent !important;
   padding: 0;
@@ -36,6 +41,9 @@ body {
   display: block;
   padding: 0 !important;
   margin: 0 !important;
+  /* Empty lines (blank lines in source) collapse to 0 height without this.
+     1.5em = line-height (1.5) × font-size (0.75rem) = 18px, matching the line numbers column. */
+  min-height: 1.5em;
 }
 
 .hl-snippet pre,

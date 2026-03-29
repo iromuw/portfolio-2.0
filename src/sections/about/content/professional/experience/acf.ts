@@ -4,23 +4,24 @@ import { ACF_SNIPPETS } from '@/sections/about/snippets/professional/experience/
 export const acf: RawFileNode = {
   type: 'file',
   iconColor: 'bg-slate-500',
-  content: `/**
- * UI/UX Designer (Volunteer)
- * Australia Career Forum
- * Oct 2022 – Aug 2023
- *
- * Contributed to UX improvements for a career development platform,
- * aligning design decisions with frontend implementation.
- *
- * Key contributions:
- * - Designed and prototyped responsive user interfaces with a focus
- *   on usability and accessibility.
- *
- * - Collaborated with frontend engineers to ensure technically feasible
- *   and efficient implementations.
- *
- * - Produced structured design documentation to support handoff
- *   and project delivery.
- */`,
+  lang: 'md',
+  content: `# UI/UX Designer (Volunteer)
+
+**Australia Career Forum**
+*Oct 2022 – Aug 2023*
+
+Improved user experience for a career development platform by bridging  
+design thinking with practical frontend implementation.
+
+## Key Contributions
+
+- Designed and prototyped responsive interfaces with a strong focus  
+  on usability and accessibility.
+
+- Worked closely with frontend engineers to translate design concepts  
+  into technically feasible solutions.
+
+- Created structured design documentation to support smooth handoff  
+  and efficient project delivery.`,
   snippets: [ACF_SNIPPETS],
 }

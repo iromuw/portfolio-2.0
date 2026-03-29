@@ -18,7 +18,7 @@ export interface RawSnippet {
   createdAt: string
   stars: number
   /** Shiki language identifier. Defaults to 'typescript'. */
-  lang?: string
+  lang?: ContentLang
   code: string
 }
 

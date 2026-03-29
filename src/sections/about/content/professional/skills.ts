@@ -1,4 +1,5 @@
 import type { RawFileNode } from '@/sections/about/types'
+import { FRONTEND_SNIPPETS, BACKEND_SNIPPETS, DATA_SNIPPETS } from '@/sections/about/snippets/professional/skills'
 
 export const skills: RawFileNode = {
   type: 'file',
@@ -16,18 +17,17 @@ but also easy to understand and pleasant to use.
 My technical experience spans frontend development,  
 backend integration, and data processing.
 
----
-
 ### Frontend
 - React
-- Next.js
+- React Native
 - Vue.js
+- Next.js
 - TypeScript
 
 ### Backend
+- PHP
 - Node.js
 - FastAPI
-- PHP
 
 ### Data
 - Python
@@ -36,12 +36,15 @@ backend integration, and data processing.
 
 ### Styling & UI
 - Tailwind CSS
-- Sass
 - Vuetify
+- Bootstrap
+- Sass
+- Figma
+- Adobe XD
 
 ### Tools
 - Git
 - Postman
 - GitLab CI/CD`,
-  snippets: [],
+  snippets: [FRONTEND_SNIPPETS, BACKEND_SNIPPETS, DATA_SNIPPETS],
 }
