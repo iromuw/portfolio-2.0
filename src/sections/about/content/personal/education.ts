@@ -1,20 +1,10 @@
 import type { RawFolderNode } from '../../types'
-import { MASTER_SNIPPETS } from '../../snippets/personal/education'
+import { MASTER_SNIPPETS, TECHNICAL_SNIPPETS, BACHELOR_SNIPPETS, ACHIEVEMENT_SNIPPETS } from '../../snippets/personal/education'
 
 export const education: RawFolderNode = {
   type: 'folder',
   iconColor: 'bg-purple-400',
   children: {
-    bachelor: {
-      type: 'file',
-      iconColor: 'bg-slate-500',
-      content: `/**
- * Bachelor's Degree
- *
- * placeholder bachelor details...
- */`,
-      snippets: [],
-    },
     master: {
       type: 'file',
       iconColor: 'bg-slate-500',
@@ -41,7 +31,22 @@ export const education: RawFolderNode = {
  * - Data Mining and Knowledge Discovery
  * - Big Data Analytics
  */`,
-      snippets: [MASTER_SNIPPETS],
+      snippets: [MASTER_SNIPPETS, TECHNICAL_SNIPPETS],
+    },
+    bachelor: {
+      type: 'file',
+      iconColor: 'bg-slate-500',
+      content: `/**
+ * Bachelor of Product Design
+ * Ming Chuan University
+ * Sep 2011 – Jun 2015
+ *
+ * Built a foundation in design thinking, user experience, and visual communication.
+ *
+ * Gained experience in product design, 3D modeling, and human-centered design,
+ * which later shaped my approach to building intuitive and user-focused interfaces.
+ */`,
+      snippets: [BACHELOR_SNIPPETS, ACHIEVEMENT_SNIPPETS],
     },
   },
 }
