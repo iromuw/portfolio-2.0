@@ -28,9 +28,9 @@ export default function Navbar() {
   }
 
   return (
-    <header className="flex items-center border-b border-white/10 bg-[#0d1320]/80 px-4 py-0 font-mono text-sm">
+    <header className="flex text-xs items-center border-b border-[#314158] bg-[#0f172b]/80 px-4 py-0 font-mono text-sm">
       {/* brand name */}
-      <div className="flex shrink-0 items-center border-r border-white/10 py-3 pr-8 w-48 text-slate-400">
+      <div className="flex shrink-0 items-center border-r border-[#314158] py-3 pr-8 w-48 text-slate-400">
         mori-wu
       </div>
 
@@ -43,7 +43,7 @@ export default function Navbar() {
               key={tab.key}
               href={tab.href}
               className={[
-                'relative shrink-0 border-r border-white/10 px-8 py-3 transition',
+                'relative shrink-0 border-r border-[#314158] px-8 py-3 transition',
                 active
                   ? 'bg-white/5 text-slate-100'
                   : 'text-slate-400 hover:bg-white/5 hover:text-slate-200',
@@ -66,7 +66,7 @@ export default function Navbar() {
         <Link
           href={CONTACT_TAB.href}
           className={[
-            'relative shrink-0 border-l border-r border-white/10 px-8 py-3 transition',
+            'relative shrink-0 border-l border-r border-[#314158] px-8 py-3 transition',
             isActive(CONTACT_TAB.href, pathname)
               ? 'bg-white/5 text-slate-100'
               : 'text-slate-400 hover:bg-white/5 hover:text-slate-200',

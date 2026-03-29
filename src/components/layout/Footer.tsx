@@ -19,13 +19,13 @@ function GithubIcon() {
 export default function Footer() {
   const { t } = useTranslation('common')
   return (
-    <div className="flex items-center justify-between gap-4 border-t border-white/10">
+    <div className="flex items-center justify-between gap-4 border-t border-[#314158]">
       <div className="flex items-center">
-        <span className="select-none border-r border-white/10 px-4 py-3 text-xs text-slate-400">
+        <span className="select-none border-r border-[#314158] px-4 py-3 text-xs text-slate-400">
           {t('footer.findMeIn')}
         </span>
         <a
-          className="border-r border-white/10 px-4 py-3 text-slate-400 transition hover:bg-white/5 hover:text-slate-200"
+          className="border-r border-[#314158] px-4 py-3 text-slate-400 transition hover:bg-white/5 hover:text-slate-200"
           href="https://www.linkedin.com/in/iromuw"
           target="_blank"
           rel="noreferrer"
@@ -36,7 +36,7 @@ export default function Footer() {
       </div>
 
       <a
-        className="flex items-center gap-2 border-l border-white/10 px-6 py-3 text-sm text-slate-400 transition hover:bg-white/10 hover:text-slate-200"
+        className="flex items-center gap-2 border-l border-[#314158] px-6 py-3 text-sm text-slate-400 transition hover:bg-white/10 hover:text-slate-200"
         href="https://github.com/iromuw"
         target="_blank"
         rel="noreferrer"

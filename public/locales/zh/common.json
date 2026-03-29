@@ -2,7 +2,7 @@
   "hello": {
     "greeting": "大家好，我是",
     "role": "前端工程師",
-    "gameHint": "// 完成遊戲以繼續",
+    "gameHint": "// 試玩遊戲或看看我的作品",
     "githubHint": "// 在 Github 找到我：",
     "useKeyboard": "// 使用鍵盤",
     "arrowsToPlay": "// 方向鍵遊玩",
@@ -17,6 +17,13 @@
     "gameOver": "遊戲結束！",
     "allFoodEaten": "做得好！",
     "wellDoneHint": "太棒了！快來看看我的作品"
+  },
+  "about": {
+    "contacts": "聯絡方式",
+    "codeSnippet": "// 程式碼展示：",
+    "details": "詳細",
+    "stars": "星",
+    "createdAt": "建立於"
   },
   "footer": {
     "findMeIn": "找到我："

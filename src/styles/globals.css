@@ -8,10 +8,53 @@ body {
 }
 
 body {
-  background: #0b1220;
+  background: #020618;
 }
 
 ::selection {
   background: rgba(251, 191, 36, 0.25);
 }
 
+/* ── Shiki: content panel ────────────────────────────────────────────────────
+  Removes Shiki's inline background so the panel inherits our theme color.
+  Each `.line` span is made block-level so line numbers align correctly.       */
+.hl-content pre {
+  background: transparent !important;
+  padding: 0;
+  margin: 0;
+  font-family: 'Fira Code', monospace;
+  overflow: visible;
+  font-size: 0.75rem;
+}
+.hl-content pre,
+.hl-content pre code,
+.hl-content pre code span {
+  line-height: 1.5 !important;
+}
+
+.hl-content code .line {
+  display: block;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.hl-snippet pre,
+.hl-snippet pre code,
+.hl-snippet pre code span {
+  line-height: 1.5 !important;
+}
+
+/* ── Shiki: snippet cards ───────────────────────────────────────────────────
+   Overrides background to match the card's dark theme color (#020618).       */
+.hl-snippet pre {
+  background: #020618 !important;
+  padding: 0.75rem;
+  margin: 0;
+  font-family: 'Fira Code', monospace;
+  overflow-x: auto;
+  font-size: 0.75rem;
+}
+
+.hl-snippet code .line {
+  display: block;
+}

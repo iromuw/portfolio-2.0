@@ -2,7 +2,7 @@
   "hello": {
     "greeting": "Hi all. I am",
     "role": "Front-end developer",
-    "gameHint": "// complete the game to continue",
+    "gameHint": "// try out the game or explore my projects",
     "githubHint": "// find my profile on Github:",
     "useKeyboard": "// use keyboard",
     "arrowsToPlay": "// arrows to play",
@@ -17,6 +17,13 @@
     "gameOver": "GAME OVER!",
     "allFoodEaten": "WELL DONE!",
     "wellDoneHint": "Nice! Now explore my projects"
+  },
+  "about": {
+    "contacts": "contacts",
+    "codeSnippet": "// Code snippet showcase:",
+    "details": "details",
+    "stars": "stars",
+    "createdAt": "Created"
   },
   "footer": {
     "findMeIn": "find me in:"
