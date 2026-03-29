@@ -1,15 +1,9 @@
 import type { RawFolderNode } from '../../types'
-import { BIO_SNIPPET } from '../../snippets'
+import { MASTER_SNIPPETS } from '../../snippets/personal/education'
 
 export const education: RawFolderNode = {
   type: 'folder',
   iconColor: 'bg-purple-400',
-  content: `/**
- * Education
- *
- * placeholder education summary...
- */`,
-  snippets: [BIO_SNIPPET],
   children: {
     bachelor: {
       type: 'file',
@@ -25,11 +19,29 @@ export const education: RawFolderNode = {
       type: 'file',
       iconColor: 'bg-slate-500',
       content: `/**
- * Master's Degree
+ * Master of Computer Science (Major in Big Data and Machine Learning)
+ * University of Wollongong
+ * Jul 2023 – Jul 2025
  *
- * placeholder master details...
+ * Graduated with Distinction
+ *
+ * Focused on building practical skills in web development, backend systems,
+ * and data-driven applications.
+ *
+ * Capstone project: SLACA — a full-stack platform integrating frontend,
+ * backend, and AI-powered features using a RAG-based chatbot system.
+ *
+ * Also developed a WordPress website with custom PHP plugins,
+ * and completed multiple data analysis projects.
+ *
+ * Relevant coursework:
+ * - Web Development
+ * - Programming and Data Structures
+ * - Web Server Programming
+ * - Data Mining and Knowledge Discovery
+ * - Big Data Analytics
  */`,
-      snippets: [],
+      snippets: [MASTER_SNIPPETS],
     },
   },
 }

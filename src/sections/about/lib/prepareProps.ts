@@ -28,21 +28,15 @@ async function processFileNode(raw: RawFileNode): Promise<HighlightedFileNode> {
 }
 
 async function processFolderNode(raw: RawFolderNode): Promise<HighlightedFolderNode> {
-  const [contentHtml, snippets, childEntries] = await Promise.all([
-    highlightCode(raw.content, 'typescript'),
-    Promise.all(raw.snippets.map(processSnippet)),
-    Promise.all(
-      Object.entries(raw.children).map(async ([name, child]) => [
-        name,
-        await processFileNode(child),
-      ] as const),
-    ),
-  ])
+  const childEntries = await Promise.all(
+    Object.entries(raw.children).map(async ([name, child]) => [
+      name,
+      await processFileNode(child),
+    ] as const),
+  )
   return {
     type: 'folder',
     iconColor: raw.iconColor,
-    contentHtml,
-    snippets,
     children: Object.fromEntries(childEntries),
   }
 }

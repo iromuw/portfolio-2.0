@@ -31,6 +31,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
 
   const sectionData = data[activeSection]
   const activeNode = resolveNode(data, activeSection, activeFile)
+  const activeFileNode = activeNode?.type === 'file' ? activeNode : null
 
   return (
     <div className="flex min-h-0 flex-1">
@@ -51,10 +52,10 @@ export default function AboutSection({ data }: AboutSectionProps) {
           activeFile={activeFile}
           onClose={() => setActiveFile(DEFAULT_FILES[activeSection])}
         />
-        <ContentPanel contentHtml={activeNode?.contentHtml ?? ''} />
+        <ContentPanel contentHtml={activeFileNode?.contentHtml ?? ''} />
       </div>
 
-      <SummaryPanel snippets={activeNode?.snippets ?? []} />
+      <SummaryPanel snippets={activeFileNode?.snippets ?? []} />
     </div>
   )
 }

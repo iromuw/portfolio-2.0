@@ -30,8 +30,6 @@ export interface RawFileNode {
 export interface RawFolderNode {
   type: 'folder'
   iconColor: string
-  content: string
-  snippets: RawSnippet[]
   children: Record<string, RawFileNode>
 }
 
@@ -63,8 +61,6 @@ export interface HighlightedFileNode {
 export interface HighlightedFolderNode {
   type: 'folder'
   iconColor: string
-  contentHtml: string
-  snippets: HighlightedSnippet[]
   children: Record<string, HighlightedFileNode>
 }
 

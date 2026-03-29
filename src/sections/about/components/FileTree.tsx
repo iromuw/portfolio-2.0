@@ -40,19 +40,15 @@ interface FolderRowProps {
   name: string
   iconColor: string
   isExpanded: boolean
-  isActive: boolean
   onClick: () => void
 }
 
-function FolderRow({ name, iconColor, isExpanded, isActive, onClick }: FolderRowProps) {
+function FolderRow({ name, iconColor, isExpanded, onClick }: FolderRowProps) {
   return (
     <button
       type="button"
       onClick={onClick}
-      className={[
-        'flex w-full items-center gap-1.5 rounded px-2 py-1 text-left font-mono text-xs transition',
-        isActive ? 'bg-white/5 text-slate-200' : 'text-slate-500 hover:text-slate-300',
-      ].join(' ')}
+      className="flex w-full items-center gap-1.5 rounded px-2 py-1 text-left font-mono text-xs text-slate-500 transition hover:text-slate-300"
     >
       {isExpanded
         ? <ChevronDown size={12} className="shrink-0" />
@@ -133,9 +129,9 @@ export default function FileTree({
                   name={name}
                   iconColor={folder.iconColor}
                   isExpanded={isExpanded}
-                  isActive={activeFile === name}
                   onClick={() => {
-                    onSelect(name)
+                    const firstChild = Object.keys(folder.children)[0]
+                    if (firstChild) onSelect(`${name}/${firstChild}`)
                     onFolderToggle(name)
                   }}
                 />
