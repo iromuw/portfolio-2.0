@@ -275,7 +275,7 @@ export default function SnakeGame({
           {/* COUNTDOWN — single focal element, teal accent */}
           {gameState === 'countdown' && (
             <div className="flex flex-1 items-center justify-center">
-              <span className="font-mono text-7xl font-bold tabular-nums text-[#40E0D0] drop-shadow-[0_0_24px_rgba(64,224,208,0.45)]">
+              <span className="font-mono text-7xl font-bold tabular-nums text-[#fffff]/40 drop-shadow-[0_0_24px_rgba(64,224,208,0.45)]">
                 {countdown}
               </span>
             </div>
@@ -288,7 +288,7 @@ export default function SnakeGame({
                 <p className="font-mono text-lg font-bold tracking-wide text-rose-400">
                   {t('hello.gameOver')}
                 </p>
-                <p className="font-mono text-xs text-slate-600">{`score: ${score} / ${MAX_FOOD}`}</p>
+                <p className="font-mono text-xs text-slate-600">{`${t('hello.score')} ${score} / ${MAX_FOOD}`}</p>
               </div>
               <button type="button" onClick={handleStart} className={`${GHOST_BTN} px-6 py-2`}>
                 {t('hello.startAgain')}
