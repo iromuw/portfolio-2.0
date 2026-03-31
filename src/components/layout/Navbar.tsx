@@ -80,6 +80,7 @@ export default function Navbar() {
             />
           )}
         </Link>
+        {/* Language toggle — hidden until Chinese content is ready
         <button
           type="button"
           onClick={toggleLocale}
@@ -88,6 +89,7 @@ export default function Navbar() {
         >
           <Globe className="h-4 w-4" />
         </button>
+        */}
       </div>
     </header>
   )
