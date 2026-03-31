@@ -1,0 +1,39 @@
+{
+  "hello": {
+    "greeting": "Hi all. I am",
+    "role": "Front-end developer",
+    "gameHint": "// try out the game or explore my projects",
+    "githubHint": "// find my profile on Github:",
+    "useKeyboard": "// use keyboard",
+    "arrowsToPlay": "// arrows to play",
+    "foodLeft": "// food left",
+    "startGame": "start-game",
+    "startAgain": "start-again",
+    "playAgain": "play-again",
+    "pressStart": "// press start to play",
+    "reset": "reset",
+    "skip": "skip",
+    "score": "score:",
+    "gameOver": "GAME OVER!",
+    "allFoodEaten": "WELL DONE!",
+    "wellDoneHint": "Nice! Now explore my projects"
+  },
+  "about": {
+    "contacts": "contacts",
+    "codeSnippet": "// Code snippet showcase:",
+    "details": "details",
+    "stars": "stars",
+    "createdAt": "Created"
+  },
+  "projects": {
+    "filterByTag": "filter by tag",
+    "viewProject": "view project",
+    "noResults": "// no projects match the selected filters"
+  },
+  "footer": {
+    "findMeIn": "find me in:"
+  },
+  "nav": {
+    "switchLanguage": "Switch language"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "hello": {
+    "greeting": "大家好，我是",
+    "role": "前端工程師",
+    "gameHint": "// 試玩遊戲或看看我的作品",
+    "githubHint": "// 在 Github 找到我：",
+    "useKeyboard": "// 使用鍵盤",
+    "arrowsToPlay": "// 方向鍵遊玩",
+    "foodLeft": "// 剩餘食物",
+    "startGame": "開始遊戲",
+    "startAgain": "再試一次",
+    "playAgain": "再玩一次",
+    "pressStart": "// 按下開始鍵",
+    "reset": "重置",
+    "skip": "略過",
+    "score": "得分：",
+    "gameOver": "遊戲結束！",
+    "allFoodEaten": "做得好！",
+    "wellDoneHint": "太棒了！快來看看我的作品"
+  },
+  "about": {
+    "contacts": "聯絡方式",
+    "codeSnippet": "// 程式碼展示：",
+    "details": "詳細",
+    "stars": "星",
+    "createdAt": "建立於"
+  },
+  "projects": {
+    "filterByTag": "依標籤篩選",
+    "viewProject": "查看專案",
+    "noResults": "// 沒有符合篩選條件的專案"
+  },
+  "footer": {
+    "findMeIn": "找到我："
+  },
+  "nav": {
+    "switchLanguage": "切換語言"
+  }
+}
