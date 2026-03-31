@@ -36,7 +36,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
   const activeFileNode = activeNode?.type === 'file' ? activeNode : null
 
   return (
-    <div className="flex min-h-0 flex-1">
+    <div className="flex min-h-0 flex-1 overflow-hidden">
       <ActivityBar activeSection={activeSection} onChange={handleSectionChange} />
 
       <FileTree

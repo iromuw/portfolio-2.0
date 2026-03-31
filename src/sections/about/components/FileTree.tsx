@@ -115,7 +115,7 @@ export default function FileTree({
   onFolderToggle,
 }: FileTreeProps) {
   return (
-    <aside className="flex w-56 shrink-0 flex-col overflow-y-auto border-r border-[#314158]">
+    <aside className="hidden w-56 shrink-0 flex-col overflow-y-auto border-r border-[#314158] md:flex">
       <SectionHeader label={sectionId} />
 
       <div className="space-y-0.5 px-2">
