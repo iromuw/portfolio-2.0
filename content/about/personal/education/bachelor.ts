@@ -1,4 +1,4 @@
-import type { RawFileNode, RawSnippet } from '~/content/about/types'
+import type { RawFileNode, RawSnippet } from '@/sections/about/types'
 
 const BACHELOR_SNIPPET: RawSnippet = {
   username: 'iromuw',

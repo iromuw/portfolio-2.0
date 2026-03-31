@@ -1,4 +1,4 @@
-import type { RawFileNode, RawSnippet } from '~/content/about/types'
+import type { RawFileNode, RawSnippet } from '@/sections/about/types'
 
 const ACF_SNIPPET: RawSnippet = {
   username: 'iromuw',

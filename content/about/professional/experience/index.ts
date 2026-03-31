@@ -1,4 +1,4 @@
-import type { RawFolderNode } from '~/content/about/types'
+import type { RawFolderNode } from '@/sections/about/types'
 import { tpi } from './tpi'
 import { acf } from './acf'
 
