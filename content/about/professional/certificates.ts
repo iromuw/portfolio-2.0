@@ -1,5 +1,6 @@
-import type { RawFileNode } from '@/sections/about/types'
+import type { RawFileNode } from '~/content/about/types'
 
+// Placeholder — add certificates content and snippets here when ready
 export const certificates: RawFileNode = {
   type: 'file',
   iconColor: 'bg-green-400',

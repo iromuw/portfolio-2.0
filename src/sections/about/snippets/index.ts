@@ -1,7 +1,0 @@
-export * from './personal/bio'
-export * from './personal/education'
-export * from './personal/interests'
-export * from './professional/experience/tpi'
-export * from './professional/experience/acf'
-export * from './professional/skills'
-export * from './professional/certificates'

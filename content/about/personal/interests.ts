@@ -1,6 +1,6 @@
-import type { RawFileNode } from '@/sections/about/types'
-import { BIO_SNIPPET } from '@/sections/about/snippets'
+import type { RawFileNode } from '~/content/about/types'
 
+// Placeholder — add interests content and snippets here when ready
 export const interests: RawFileNode = {
   type: 'file',
   iconColor: 'bg-teal-400',
@@ -9,5 +9,5 @@ export const interests: RawFileNode = {
  *
  * placeholder interests...
  */`,
-  snippets: [BIO_SNIPPET],
+  snippets: [],
 }

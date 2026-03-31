@@ -12,7 +12,7 @@ export default function AboutPage({ aboutData }: AboutPageProps) {
 }
 
 export const getStaticProps: GetStaticProps<AboutPageProps> = async ({ locale }) => {
-  const { rawAboutData } = await import('@/sections/about/content')
+  const { rawAboutData } = await import('~/content/about')
   const { prepareAboutProps } = await import('@/sections/about/lib/prepareProps')
 
   const aboutData = await prepareAboutProps(rawAboutData)

@@ -1,27 +1,22 @@
-import { useTranslation } from 'next-i18next'
-import type { Project } from '@/sections/projects/data/types'
+import { memo } from 'react'
+import type { Project } from '~/content/projects/types'
 import ProjectCard from './ProjectCard'
 
 interface ProjectGridProps {
   projects: Project[]
+  onSelect: (project: Project) => void
 }
 
-export default function ProjectGrid({ projects }: ProjectGridProps) {
-  const { t } = useTranslation('common')
-
-  if (projects.length === 0) {
-    return (
-      <div className="flex flex-1 items-center justify-center">
-        <p className="font-mono text-xs text-slate-600">{t('projects.noResults')}</p>
-      </div>
-    )
-  }
+function ProjectGrid({ projects, onSelect }: ProjectGridProps) {
+  if (projects.length === 0) return null
 
   return (
-    <div className="grid grid-cols-1 gap-4 p-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {projects.map((project) => (
-        <ProjectCard key={project.slug} project={project} />
+        <ProjectCard key={project.slug} project={project} onSelect={onSelect} />
       ))}
     </div>
   )
 }
+
+export default memo(ProjectGrid)

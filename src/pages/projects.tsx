@@ -1,6 +1,6 @@
 import type { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import type { Project } from '@/sections/projects/data/types'
+import type { Project } from '~/content/projects/types'
 import ProjectsSection from '@/sections/projects'
 
 interface ProjectsPageProps {
@@ -12,7 +12,7 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
 }
 
 export const getStaticProps: GetStaticProps<ProjectsPageProps> = async ({ locale }) => {
-  const { PROJECTS } = await import('@/sections/projects/data')
+  const { PROJECTS } = await import('~/content/projects')
 
   return {
     props: {
