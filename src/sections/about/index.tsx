@@ -50,10 +50,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
       />
 
       <div className="flex min-h-0 flex-1 flex-col">
-        <TabBar
-          activeFile={activeFile}
-          onClose={() => setActiveFile(DEFAULT_FILES[activeSection])}
-        />
+        <TabBar activeFile={activeFile} />
         <ContentPanel contentHtml={activeFileNode?.contentHtml ?? ''} />
       </div>
 
