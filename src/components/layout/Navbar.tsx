@@ -1,7 +1,5 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { Globe } from 'lucide-react'
-import { useTranslation } from 'next-i18next'
 
 const CENTER_TABS = [
   { key: '_hello', href: '/' },
@@ -18,15 +16,8 @@ function isActive(href: string, pathname: string) {
 }
 
 export default function Navbar() {
-  const { t } = useTranslation('common')
   const router = useRouter()
   const pathname = router.pathname
-
-  const toggleLocale = async () => {
-    const cur = router.locale ?? 'en'
-    const next = cur === 'en' ? 'zh' : 'en'
-    await router.push(router.asPath, router.asPath, { locale: next })
-  }
 
   return (
     <header className="flex text-xs items-center border-b border-[#314158] bg-[#0f172b]/80 px-4 py-0 font-mono text-sm">

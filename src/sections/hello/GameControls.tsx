@@ -42,7 +42,7 @@ function FoodLeft({ remaining }: { remaining: number }) {
             className={[
               'h-2 w-2 rounded-full transition-all duration-200',
               i < remaining
-                ? 'bg-[#f5d44d]/85 shadow-[0_0_8px_rgba(64,224,208,0.55)]'
+                ? 'bg-[#ffff]/90 shadow-[0_0_8px_rgba(64,224,208,0.55)]'
                 : 'bg-white/[0.09]',
             ].join(' ')}
             aria-hidden
