@@ -9,7 +9,8 @@ const CENTER_TABS = [
   { key: '_projects', href: '/projects' },
 ]
 
-const CONTACT_TAB = { key: '_contact-me', href: '/contact' }
+// Contact tab — hidden until page is ready
+// const CONTACT_TAB = { key: '_contact-me', href: '/contact' }
 
 function isActive(href: string, pathname: string) {
   if (href === '/') return pathname === '/'
@@ -61,8 +62,9 @@ export default function Navbar() {
         })}
       </nav>
 
-      {/* right side: contact tab + language toggle */}
+      {/* right side — hidden until ready */}
       <div className="flex shrink-0 items-center">
+        {/* Contact tab — hidden until page is ready
         <Link
           href={CONTACT_TAB.href}
           className={[
@@ -80,6 +82,7 @@ export default function Navbar() {
             />
           )}
         </Link>
+        */}
         {/* Language toggle — hidden until Chinese content is ready
         <button
           type="button"
