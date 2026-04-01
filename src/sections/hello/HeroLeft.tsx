@@ -48,7 +48,7 @@ export default function HeroLeft() {
           view-projects
         </Link>
         <a
-          href="/cv.pdf"
+          href="/Moyun_Wu_Resume.pdf"
           download
           className="flex items-center gap-2 rounded border border-[#314158] px-4 py-2 font-mono text-sm text-slate-400 transition hover:border-slate-500 hover:text-slate-200"
         >
