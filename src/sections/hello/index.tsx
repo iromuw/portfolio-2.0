@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import HeroLeft from './HeroLeft'
-import SnakeGame, { MAX_FOOD } from './SnakeGame'
-import GameControls from './GameControls'
+import HeroLeft from './components/HeroLeft'
+import SnakeGame, { MAX_FOOD } from './components/SnakeGame'
+import GameControls from './components/GameControls'
 
 export default function HelloSection() {
   return (

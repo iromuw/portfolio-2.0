@@ -5,8 +5,9 @@ const CENTER_TABS = [
   { key: '_hello', href: '/' },
   { key: '_about-me', href: '/about' },
   { key: '_projects', href: '/projects' },
-  { key: '_contact-me', href: '/contact' },
 ]
+
+const CONTACT_TAB = { key: '_contact-me', href: '/contact' }
 
 function isActive(href: string, pathname: string) {
   if (href === '/') return pathname === '/'
@@ -52,13 +53,12 @@ export default function Navbar() {
         })}
       </nav>
 
-      {/* right side — hidden until ready */}
+      {/* right side */}
       <div className="flex shrink-0 items-center">
-        {/* Contact tab — hidden until page is ready
         <Link
           href={CONTACT_TAB.href}
           className={[
-            'relative shrink-0 border-l border-r border-[#314158] px-8 py-3 transition',
+            'relative shrink-0 border-l border-[#314158] px-8 py-3 transition',
             isActive(CONTACT_TAB.href, pathname)
               ? 'bg-white/5 text-slate-100'
               : 'text-slate-400 hover:bg-white/5 hover:text-slate-200',
@@ -72,7 +72,6 @@ export default function Navbar() {
             />
           )}
         </Link>
-        */}
         {/* Language toggle — hidden until Chinese content is ready
         <button
           type="button"
