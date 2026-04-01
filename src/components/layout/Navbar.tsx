@@ -5,10 +5,8 @@ const CENTER_TABS = [
   { key: '_hello', href: '/' },
   { key: '_about-me', href: '/about' },
   { key: '_projects', href: '/projects' },
+  { key: '_contact-me', href: '/contact' },
 ]
-
-// Contact tab — hidden until page is ready
-// const CONTACT_TAB = { key: '_contact-me', href: '/contact' }
 
 function isActive(href: string, pathname: string) {
   if (href === '/') return pathname === '/'
