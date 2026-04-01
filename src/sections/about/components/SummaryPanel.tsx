@@ -7,7 +7,7 @@ interface SummaryPanelProps {
 
 export default function SummaryPanel({ snippets }: SummaryPanelProps) {
   return (
-    <aside className="hidden w-80 shrink-0 flex-col gap-4 overflow-y-auto border-l border-[#314158] p-4 lg:flex">
+    <aside className="hidden w-1/3 shrink-0 flex-col gap-4 overflow-y-auto border-l border-[#314158] p-4 lg:flex">
       {snippets.length > 0 ? (
         snippets.map((snippet, i) => <SnippetCard key={i} snippet={snippet} />)
       ) : (

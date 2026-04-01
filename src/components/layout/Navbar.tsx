@@ -20,9 +20,10 @@ export default function Navbar() {
   const pathname = router.pathname
 
   return (
-    <header className="flex text-xs items-center border-b border-[#314158] bg-[#0f172b]/80 px-4 py-0 font-mono text-sm">
-      {/* brand name */}
-      <div className="flex shrink-0 items-center border-r border-[#314158] py-3 pr-8 w-48 text-slate-400">
+    <header className="flex text-xs items-center border-b border-[#314158] bg-[#0f172b]/80 py-0 font-mono text-sm">
+      {/* brand name — pl-4 moves padding inside the cell so its right border
+          lands exactly at --left-shell-width, aligning with the body panels */}
+      <div className="flex shrink-0 items-center border-r border-[#314158] py-3 pl-4 pr-8 w-[var(--left-shell-width)] text-slate-400">
         mori-wu
       </div>
 

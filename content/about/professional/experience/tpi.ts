@@ -2,7 +2,7 @@ import type { RawFileNode, RawSnippet } from '@/sections/about/types'
 
 const TPI_SNIPPET: RawSnippet = {
   username: 'iromuw',
-  createdAt: '7 months ago',
+  createdAt: '25/03/2026',
   stars: 0,
   lang: 'typescript',
   code: `// Experience Highlight

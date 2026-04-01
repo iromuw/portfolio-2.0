@@ -2,7 +2,7 @@ import type { RawFileNode, RawSnippet } from '@/sections/about/types'
 
 const FRONTEND_SNIPPET: RawSnippet = {
   username: 'iromuw',
-  createdAt: '7 months ago',
+  createdAt: '25/03/2026',
   stars: 0,
   lang: 'typescript',
   code: `// Frontend
@@ -14,7 +14,7 @@ const frontend = {
 
 const BACKEND_SNIPPET: RawSnippet = {
   username: 'iromuw',
-  createdAt: '7 months ago',
+  createdAt: '25/03/2026',
   stars: 0,
   lang: 'typescript',
   code: `// Backend
@@ -26,7 +26,7 @@ const backend = {
 
 const DATA_SNIPPET: RawSnippet = {
   username: 'iromuw',
-  createdAt: '7 months ago',
+  createdAt: '25/03/2026',
   stars: 0,
   lang: 'typescript',
   code: `// Data

@@ -1,9 +1,9 @@
 {
   "hello": {
     "greeting": "Hi all. I am",
-    "role": "Front-end developer",
-    "gameHint": "// try out the game or explore my projects",
-    "githubHint": "// find my profile on Github:",
+    "role": "Frontend Developer | React / Next.js",
+    "valueHint": "// building clean, interactive UIs for real-world products",
+    "findMeOnline": "// find my profile on Github:",
     "useKeyboard": "// use keyboard",
     "arrowsToPlay": "// arrows to play",
     "foodLeft": "// food left",
