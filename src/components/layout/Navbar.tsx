@@ -7,8 +7,7 @@ const CENTER_TABS = [
   { key: '_projects', href: '/projects' },
 ]
 
-// Contact tab — hidden until page is ready
-// const CONTACT_TAB = { key: '_contact-me', href: '/contact' }
+const CONTACT_TAB = { key: '_contact-me', href: '/contact' }
 
 function isActive(href: string, pathname: string) {
   if (href === '/') return pathname === '/'
@@ -20,9 +19,10 @@ export default function Navbar() {
   const pathname = router.pathname
 
   return (
-    <header className="flex text-xs items-center border-b border-[#314158] bg-[#0f172b]/80 px-4 py-0 font-mono text-sm">
-      {/* brand name */}
-      <div className="flex shrink-0 items-center border-r border-[#314158] py-3 pr-8 w-48 text-slate-400">
+    <header className="flex text-xs items-center border-b border-[#314158] bg-[#0f172b]/80 py-0 font-mono text-sm">
+      {/* brand name — pl-4 moves padding inside the cell so its right border
+          lands exactly at --left-shell-width, aligning with the body panels */}
+      <div className="flex shrink-0 items-center border-r border-[#314158] py-3 pl-4 pr-8 w-[var(--left-shell-width)] text-slate-400">
         mori-wu
       </div>
 
@@ -53,13 +53,12 @@ export default function Navbar() {
         })}
       </nav>
 
-      {/* right side — hidden until ready */}
+      {/* right side */}
       <div className="flex shrink-0 items-center">
-        {/* Contact tab — hidden until page is ready
         <Link
           href={CONTACT_TAB.href}
           className={[
-            'relative shrink-0 border-l border-r border-[#314158] px-8 py-3 transition',
+            'relative shrink-0 border-l border-[#314158] px-8 py-3 transition',
             isActive(CONTACT_TAB.href, pathname)
               ? 'bg-white/5 text-slate-100'
               : 'text-slate-400 hover:bg-white/5 hover:text-slate-200',
@@ -73,7 +72,6 @@ export default function Navbar() {
             />
           )}
         </Link>
-        */}
         {/* Language toggle — hidden until Chinese content is ready
         <button
           type="button"

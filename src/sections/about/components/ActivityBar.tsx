@@ -14,7 +14,7 @@ interface ActivityBarProps {
 
 export default function ActivityBar({ activeSection, onChange }: ActivityBarProps) {
   return (
-    <aside className="flex w-12 shrink-0 flex-col items-center gap-2 border-r border-[#314158] py-4">
+    <aside className="flex w-[var(--activity-bar-width)] shrink-0 flex-col items-center gap-2 border-r border-[#314158] py-4">
       {SECTIONS.map(({ id, Icon }) => (
         <button
           key={id}

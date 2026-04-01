@@ -1,12 +1,12 @@
 import { useState } from 'react'
-import HeroLeft from './HeroLeft'
-import SnakeGame, { MAX_FOOD } from './SnakeGame'
-import GameControls from './GameControls'
+import HeroLeft from './components/HeroLeft'
+import SnakeGame, { MAX_FOOD } from './components/SnakeGame'
+import GameControls from './components/GameControls'
 
 export default function HelloSection() {
   return (
-    <div className="flex flex-1 items-center justify-center px-6 py-10 md:px-10">
-      <div className="grid w-full max-w-5xl gap-10 md:grid-cols-2 md:items-center">
+    <div className="flex flex-1 items-center px-4 py-10 md:px-4">
+      <div className="grid w-full max-w-[1100px] gap-10 md:ml-[var(--left-shell-width)] md:grid-cols-2 md:items-center">
         <HeroLeft />
         <HeroRight />
       </div>
@@ -35,7 +35,7 @@ function HeroRight() {
   const [foodLeft, setFoodLeft] = useState(MAX_FOOD)
 
   return (
-    <section className="relative">
+    <section className="relative md:justify-self-end">
       {/* background glow — very subtle, indigo-shifted */}
       <div
         className="pointer-events-none absolute -inset-8 rounded-[32px] bg-[radial-gradient(circle_at_50%_45%,rgba(79,70,229,0.07),transparent_55%)]"

@@ -28,6 +28,7 @@ function FeaturedProjectCard({ project, onSelect }: FeaturedProjectCardProps) {
               src={project.image}
               alt={project.title}
               fill
+              sizes="(max-width: 768px) 100vw, 60vw"
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
           ) : (
@@ -67,7 +68,7 @@ function FeaturedProjectCard({ project, onSelect }: FeaturedProjectCardProps) {
           <div className="flex flex-wrap items-center gap-2 pt-0.5">
             <span className="flex items-center gap-1 font-mono text-xs text-slate-600 transition-colors group-hover:text-teal-500/70">
               <ArrowRight size={11} />
-              open details
+              {'// open details'}
             </span>
             <div className="ml-auto flex items-center gap-2">
               {project.links.github && (

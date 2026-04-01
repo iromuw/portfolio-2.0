@@ -1,6 +1,6 @@
-import Image from 'next/image'
-import { useTranslation } from 'next-i18next'
 import type { HighlightedSnippet } from '@/sections/about/types'
+import { useTranslation } from 'next-i18next'
+import Image from 'next/image'
 
 interface SnippetCardProps {
   snippet: HighlightedSnippet
@@ -8,9 +8,9 @@ interface SnippetCardProps {
 
 export default function SnippetCard({ snippet }: SnippetCardProps) {
   const { t } = useTranslation('common')
-
+  
   return (
-    <div className="space-y-2">
+    <div className="space-y-3">
       {/* Header */}
       <div className="flex items-center gap-3">
         <Image

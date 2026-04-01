@@ -86,7 +86,7 @@ export default function FilterPanel({ filters, onChange }: FilterPanelProps) {
   }
 
   return (
-    <aside className="flex w-52 shrink-0 flex-col overflow-y-auto border-r border-[#314158]">
+    <aside className="flex w-[var(--left-shell-width)] shrink-0 flex-col overflow-y-auto border-r border-[#314158]">
       {/* Header */}
       <div className="flex shrink-0 items-center justify-between border-b border-[#314158] px-3 py-2.5">
         <div className="flex items-center gap-1.5">

@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── Left-side column system ─────────────────────────────────────────────────
+   Single source of truth for the three co-aligned left panels:
+     mori-wu header cell  =  activity bar  +  file tree
+   Change --left-shell-width here to reflow all three panels at once.          */
+:root {
+  --left-shell-width: 208px;   /* total width of the left shell (= w-52) */
+  --activity-bar-width: 48px;  /* activity bar icon column (= w-12) */
+  --file-tree-width: calc(var(--left-shell-width) - var(--activity-bar-width)); /* 160px */
+}
+
 html,
 body {
   height: 100%;

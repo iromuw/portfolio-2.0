@@ -2,7 +2,7 @@ import type { RawFileNode, RawSnippet } from '@/sections/about/types'
 
 const STATUS_SNIPPET: RawSnippet = {
   username: 'iromuw',
-  createdAt: '1 months ago',
+  createdAt: '25/03/2026',
   stars: 0,
   lang: 'typescript',
   code: `// Current Status
@@ -21,7 +21,7 @@ const status = {
 
 const PHILOSOPHY_SNIPPET: RawSnippet = {
   username: 'iromuw',
-  createdAt: '1 months ago',
+  createdAt: '25/03/2026',
   stars: 3,
   lang: 'typescript',
   code: `// Philosophy
@@ -34,13 +34,13 @@ const philosophy = {
 
 const BIO_SNIPPET: RawSnippet = {
   username: 'iromuw',
-  createdAt: '5 months ago',
+  createdAt: '25/03/2026',
   stars: 3,
   lang: 'typescript',
   code: `// About Me
 const developer = {
   name: "Mo-Yun (Mori) Wu",
-  role: "Front-end Developer",
+  role: "Frontend Developer",
   location: "Sydney",
   stack: ["Vue", "React", "Next.js"],
   backend: ["Node.js", "FastAPI"],

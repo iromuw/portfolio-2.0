@@ -106,6 +106,12 @@ function drawCanvas(
 const GHOST_BTN =
   'rounded-md border border-[#40E0D0]/35 bg-[#40E0D0]/[0.08] px-8 py-2.5 font-mono text-sm font-medium text-[#40E0D0] transition-all duration-200 select-none hover:bg-[#40E0D0]/[0.15] hover:border-[#40E0D0]/60 hover:shadow-[0_0_16px_rgba(64,224,208,0.20)] active:scale-[0.97] active:shadow-[0_0_20px_rgba(64,224,208,0.28)]'
 
+// Idle-state button — same base as GHOST_BTN but deliberately subdued.
+// Fades in to full intensity on hover/focus so the game feels discoverable
+// rather than competing with the primary CTAs on the left.
+const IDLE_BTN =
+  `${GHOST_BTN} opacity-[0.55] transition-all duration-300 hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#40E0D0]/30`
+
 export default function SnakeGame({
   onFoodLeftChange,
 }: {
@@ -266,7 +272,7 @@ export default function SnakeGame({
           {gameState === 'idle' && (
             <div className="flex flex-1 flex-col items-center justify-end gap-3 pb-6">
               <p className="font-mono text-xs text-slate-600">{t('hello.pressStart')}</p>
-              <button type="button" onClick={handleStart} className={GHOST_BTN}>
+              <button type="button" onClick={handleStart} className={IDLE_BTN}>
                 {t('hello.startGame')}
               </button>
             </div>

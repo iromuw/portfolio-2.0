@@ -2,7 +2,7 @@ import type { RawFileNode, RawSnippet } from '@/sections/about/types'
 
 const BACHELOR_SNIPPET: RawSnippet = {
   username: 'iromuw',
-  createdAt: '7 months ago',
+  createdAt: '25/03/2026',
   stars: 0,
   lang: 'typescript',
   code: `// Bachelor Degree
@@ -17,7 +17,7 @@ const bachelor = {
 
 const ACHIEVEMENT_SNIPPET: RawSnippet = {
   username: 'iromuw',
-  createdAt: '7 months ago',
+  createdAt: '25/03/2026',
   stars: 0,
   lang: 'typescript',
   code: `// Achievement

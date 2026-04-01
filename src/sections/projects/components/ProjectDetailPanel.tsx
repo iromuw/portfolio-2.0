@@ -81,6 +81,7 @@ export default function ProjectDetailPanel({ project, onClose }: ProjectDetailPa
                 src={project.image}
                 alt={project.title}
                 fill
+                sizes="(max-width: 768px) 100vw, 460px"
                 className="object-cover"
               />
             </div>
