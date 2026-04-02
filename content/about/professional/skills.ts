@@ -40,36 +40,32 @@ export const skills: RawFileNode = {
   type: 'file',
   iconColor: 'bg-blue-400',
   lang: 'md',
-  content: `## Skills
+  content: `# Skills
 
-I approach frontend development with a strong design background,
-focusing on creating intuitive and visually clear user experiences.
+I approach frontend development with a strong design background, focusing on creating intuitive and visually clear user experiences.
 
-I care about both how things look and how they work,
-aiming to build interfaces that are not only functional,
-but also easy to understand and pleasant to use.
+I care about both how things look and how they work, aiming to build interfaces that are not only functional, but also easy to understand and pleasant to use.
 
-My technical experience spans frontend development,
-backend integration, and data processing.
+My technical experience spans frontend development, backend integration, and data processing.
 
-### Frontend
+## Frontend
 - React
 - React Native
 - Vue.js
 - Next.js
 - TypeScript
 
-### Backend
+## Backend
 - PHP
 - Node.js
 - FastAPI
 
-### Data
+## Data
 - Python
 - NumPy
 - Pandas
 
-### Styling & UI
+## Styling & UI
 - Tailwind CSS
 - Vuetify
 - Bootstrap
@@ -77,7 +73,7 @@ backend integration, and data processing.
 - Figma
 - Adobe XD
 
-### Tools
+## Tools
 - Git
 - Postman
 - GitLab CI/CD`,

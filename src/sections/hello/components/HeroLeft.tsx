@@ -4,23 +4,27 @@ import { Download, FolderOpen } from 'lucide-react'
 
 export default function HeroLeft() {
   const { t } = useTranslation('common')
+  const [roleTitle, roleStack] = t('hello.role').split('|').map((s) => s.trim())
   return (
     <section className="space-y-8">
 
       {/* Identity: Name → Role */}
-      <div className="space-y-2">
-        <p className="font-mono text-sm text-slate-500">{t('hello.greeting')}</p>
-        <h1 className="text-5xl font-semibold tracking-tight text-zinc-100 md:text-6xl">
+      <div>
+        <p className="mb-1 font-mono text-sm text-slate-500">{t('hello.greeting')}</p>
+        <h1 className="mb-3 text-5xl font-bold tracking-tight text-zinc-100 md:text-6xl">
           Mori Wu
         </h1>
-        <p className="flex items-center gap-2 font-mono text-xl text-indigo-400">
-          <span>{'>'}</span>
-          {t('hello.role')}
-        </p>
+        <div className="font-mono text-indigo-400">
+          <p className="flex items-center gap-2 text-lg md:text-xl">
+            <span className="text-indigo-400/50">{'>'}</span>
+            {roleTitle}
+          </p>
+          <p className="pl-5 text-base text-indigo-400/60 md:text-lg">{roleStack}</p>
+        </div>
       </div>
 
       {/* Social proof */}
-      <div className="space-y-2 font-mono text-sm leading-relaxed">
+      <div className="space-y-2.5 font-mono text-sm leading-loose">
         <div className="text-slate-500">{t('hello.valueHint')}</div>
         <div className="text-slate-500">{t('hello.findMeOnline')}</div>
         <div className="flex flex-wrap items-baseline gap-2">

@@ -1,4 +1,5 @@
 import { createHighlighter } from 'shiki'
+import { marked } from 'marked'
 
 type HighlighterInstance = Awaited<ReturnType<typeof createHighlighter>>
 
@@ -13,6 +14,15 @@ function getHighlighter(): Promise<HighlighterInstance> {
     })
   }
   return highlighterPromise
+}
+
+/**
+ * Convert a Markdown string to HTML.
+ * Used for content files authored in Markdown so they render as prose, not
+ * as Shiki-highlighted code blocks.  Runs server-side only (getStaticProps).
+ */
+export function renderMarkdown(content: string): string {
+  return String(marked.parse(content))
 }
 
 /**

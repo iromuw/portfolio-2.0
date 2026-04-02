@@ -173,8 +173,8 @@ export default function ProjectDetailPanel({ project, onClose }: ProjectDetailPa
             </section>
           )}
 
-          {/* Links */}
-          {(project.links.caseStudy || project.links.github || project.links.liveDemo) && (
+          {/* Links - Hidden until completed */} 
+          {/* {(project.links.caseStudy || project.links.github || project.links.liveDemo) && (
             <section className="flex flex-wrap gap-2 pb-2">
               {project.links.caseStudy && (
                 <a
@@ -208,7 +208,7 @@ export default function ProjectDetailPanel({ project, onClose }: ProjectDetailPa
                 </a>
               )}
             </section>
-          )}
+          )} */}
 
         </div>
       </div>

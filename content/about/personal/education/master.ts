@@ -35,21 +35,19 @@ export const master: RawFileNode = {
   lang: 'md',
   content: `# Master of Computer Science
 
-**University of Wollongong**
-*Jul 2023 – Jul 2025*
-*Major in Big Data and Machine Learning*
+## University of Wollongong
+
+*Jul 2023 – Jul 2025*   
+*Major in Big Data and Machine Learning*    
 *Graduated with Distinction*
 
-Focused on building practical skills in web development, backend systems,
-and data-driven applications.
+Focused on building practical skills in web development, backend systems, and data-driven applications.
 
 ## Capstone project
 
-**SLACA** — a full-stack platform integrating frontend, backend,
-and AI-powered features using a RAG-based chatbot system.
+**SLACA** — a full-stack platform integrating frontend, backend, and AI-powered features using a RAG-based chatbot system.
 
-Also developed a WordPress website with custom PHP plugins,
-and completed multiple data analysis projects.
+Also developed a WordPress website with custom PHP plugins, and completed multiple data analysis projects.
 
 ## Relevant coursework:
 

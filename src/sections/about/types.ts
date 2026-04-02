@@ -59,6 +59,8 @@ export interface HighlightedFileNode {
   type: 'file'
   iconColor: string
   contentHtml: string
+  /** True when contentHtml was produced by the Markdown parser, not Shiki. */
+  isMarkdown: boolean
   snippets: HighlightedSnippet[]
 }
 
