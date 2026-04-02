@@ -34,12 +34,11 @@ export const bachelor: RawFileNode = {
   lang: 'md',
   content: `# Bachelor of Product Design
 
-**Ming Chuan University**
+## Ming Chuan University   
 *Sep 2011 – Jun 2015*
 
 Built a foundation in design thinking, user experience, and visual communication.
 
-Gained experience in product design, 3D modeling, and human-centered design,
-which later shaped my approach to building intuitive and user-focused interfaces.`,
+Gained experience in product design, 3D modeling, and human-centered design, which later shaped my approach to building intuitive and user-focused interfaces.`,
   snippets: [BACHELOR_SNIPPET, ACHIEVEMENT_SNIPPET],
 }

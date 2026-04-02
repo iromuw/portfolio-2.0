@@ -77,6 +77,90 @@ body {
   display: block;
 }
 
+/* ── Prose content (Markdown files) ─────────────────────────────────────────
+   Applied to content files authored as Markdown. Renders as readable prose
+   instead of a Shiki code view. Keeps the monospace font and dark palette
+   to preserve the IDE aesthetic.                                              */
+
+.hl-prose {
+  font-family: 'Fira Code', monospace;
+  font-size: 0.8125rem;   /* 13px — matches the Shiki code view */
+  line-height: 1.75;
+  color: #94a3b8;         /* slate-400 */
+}
+
+.hl-prose h1 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #e2e8f0;         /* slate-200 */
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.hl-prose h2 {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #cbd5e1;         /* slate-300 */
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.hl-prose h3 {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #94a3b8;         /* slate-400 */
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.hl-prose p {
+  margin-top: 0;
+  margin-bottom: 0.875rem;
+}
+
+.hl-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.hl-prose ul,
+.hl-prose ol {
+  margin-top: 0;
+  margin-bottom: 0.875rem;
+  padding-left: 1.25rem;
+}
+
+.hl-prose li {
+  margin-bottom: 0.25rem;
+  list-style-type: disc;
+}
+
+.hl-prose strong {
+  font-weight: 600;
+  color: #cbd5e1;         /* slate-300 */
+}
+
+.hl-prose em {
+  font-style: italic;
+  color: #94a3b8;
+}
+
+.hl-prose hr {
+  border: none;
+  border-top: 1px solid #314158;
+  margin: 1.25rem 0;
+}
+
+/* ── Scrollbar utility ───────────────────────────────────────────────────────
+   Hide scrollbar while keeping scroll functionality (used on mobile tab bars). */
+
+.scrollbar-none {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* ── Page transition ─────────────────────────────────────────────────────────
    Triggered on every route change by re-keying the page wrapper.
    Fade + subtle upward shift mimics opening a file in an editor.            */

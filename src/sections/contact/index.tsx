@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import type { FormEvent } from 'react'
+import { Mail, Phone } from 'lucide-react'
 import type { Form, Status } from './types'
-import { WEB3FORMS_KEY } from './constants'
+import { WEB3FORMS_KEY, CONTACT_EMAIL, CONTACT_PHONE } from './constants'
 import { isValidEmail } from './utils'
 import { ContactSidebar } from './components/ContactSidebar'
 import { ContactForm } from './components/ContactForm'
@@ -47,18 +48,39 @@ export default function ContactSection() {
     <div className="flex min-h-0 flex-1 overflow-hidden">
       <ContactSidebar />
 
-      <div className="flex flex-1 items-center justify-center p-8">
-        {status === 'success' ? (
-          <SuccessState onReset={reset} />
-        ) : (
-          <ContactForm
-            form={form}
-            onChange={setForm}
-            onSubmit={handleSubmit}
-            loading={status === 'loading'}
-            canSubmit={canSubmit}
-          />
-        )}
+      <div className="flex flex-1 flex-col">
+        {/* Mobile contact info — sidebar is hidden on mobile so show it here */}
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-1 border-b border-[#314158] px-4 py-3 md:hidden">
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            className="flex items-center gap-2 font-mono text-xs text-slate-400 transition hover:text-teal-400"
+          >
+            <Mail size={12} className="shrink-0" />
+            {CONTACT_EMAIL}
+          </a>
+          <a
+            href={`tel:${CONTACT_PHONE}`}
+            className="flex items-center gap-2 font-mono text-xs text-slate-400 transition hover:text-teal-400"
+          >
+            <Phone size={12} className="shrink-0" />
+            {CONTACT_PHONE}
+          </a>
+        </div>
+
+        {/* Form area */}
+        <div className="flex flex-1 items-center justify-center p-8">
+          {status === 'success' ? (
+            <SuccessState onReset={reset} />
+          ) : (
+            <ContactForm
+              form={form}
+              onChange={setForm}
+              onSubmit={handleSubmit}
+              loading={status === 'loading'}
+              canSubmit={canSubmit}
+            />
+          )}
+        </div>
       </div>
 
       <CodePreview form={form} />

@@ -19,21 +19,17 @@ export const acf: RawFileNode = {
   lang: 'md',
   content: `# UI/UX Designer (Volunteer)
 
-**Australia Career Forum**
+## Australia Career Forum
 *Oct 2022 – Aug 2023*
 
-Improved user experience for a career development platform by bridging
-design thinking with practical frontend implementation.
+Improved user experience for a career development platform by bridging design thinking with practical frontend implementation.
 
 ## Key Contributions
 
-- Designed and prototyped responsive interfaces with a strong focus
-  on usability and accessibility.
+- Designed and prototyped responsive interfaces with a strong focus on usability and accessibility.
 
-- Worked closely with frontend engineers to translate design concepts
-  into technically feasible solutions.
+- Worked closely with frontend engineers to translate design concepts into technically feasible solutions.
 
-- Created structured design documentation to support smooth handoff
-  and efficient project delivery.`,
+- Created structured design documentation to support smooth handoff and efficient project delivery.`,
   snippets: [ACF_SNIPPET],
 }

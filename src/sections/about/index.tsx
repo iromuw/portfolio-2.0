@@ -4,6 +4,7 @@ import { DEFAULT_FILES } from './constants'
 import { resolveNode } from './lib/resolveNode'
 import ActivityBar from './components/ActivityBar'
 import FileTree from './components/FileTree'
+import MobileFileNav from './components/MobileFileNav'
 import TabBar from './components/TabBar'
 import ContentPanel from './components/ContentPanel'
 import SummaryPanel from './components/SummaryPanel'
@@ -31,6 +32,13 @@ export default function AboutSection({ data }: AboutSectionProps) {
     )
   }
 
+  const handleTabSelect = (sectionId: SectionId, fileId: string) => {
+    if (sectionId !== activeSection) setActiveSection(sectionId)
+    setActiveFile(fileId)
+    const parentFolder = fileId.includes('/') ? fileId.split('/')[0] : null
+    setExpandedFolders(parentFolder ? [parentFolder] : [])
+  }
+
   const sectionData = data[activeSection]
   const activeNode = resolveNode(data, activeSection, activeFile)
   const activeFileNode = activeNode?.type === 'file' ? activeNode : null
@@ -49,9 +57,17 @@ export default function AboutSection({ data }: AboutSectionProps) {
         onFolderToggle={handleFolderToggle}
       />
 
-      <div className="flex min-h-0 flex-1 flex-col">
-        <TabBar activeFile={activeFile} />
-        <ContentPanel contentHtml={activeFileNode?.contentHtml ?? ''} />
+      <div className="flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
+        <MobileFileNav
+          data={data}
+          activeSection={activeSection}
+          activeFile={activeFile}
+          onSelect={handleTabSelect}
+        />
+        <div className="hidden md:block">
+          <TabBar activeFile={activeFile} />
+        </div>
+        <ContentPanel contentHtml={activeFileNode?.contentHtml ?? ''} isMarkdown={activeFileNode?.isMarkdown} />
       </div>
 
       <SummaryPanel snippets={activeFileNode?.snippets ?? []} />

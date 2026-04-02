@@ -1,4 +1,4 @@
-import { highlightCode } from '@/lib/highlight'
+import { highlightCode, renderMarkdown } from '@/lib/highlight'
 import type {
   RawAboutData,
   RawSnippet,
@@ -20,11 +20,14 @@ async function processSnippet(raw: RawSnippet): Promise<HighlightedSnippet> {
 }
 
 async function processFileNode(raw: RawFileNode): Promise<HighlightedFileNode> {
+  const isMarkdown = raw.lang === 'md'
   const [contentHtml, snippets] = await Promise.all([
-    highlightCode(raw.content, raw.lang ?? 'typescript'),
+    isMarkdown
+      ? Promise.resolve(renderMarkdown(raw.content))
+      : highlightCode(raw.content, raw.lang ?? 'typescript'),
     Promise.all(raw.snippets.map(processSnippet)),
   ])
-  return { type: 'file', iconColor: raw.iconColor, contentHtml, snippets }
+  return { type: 'file', iconColor: raw.iconColor, contentHtml, isMarkdown, snippets }
 }
 
 async function processFolderNode(raw: RawFolderNode): Promise<HighlightedFolderNode> {

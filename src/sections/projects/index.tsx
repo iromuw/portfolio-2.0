@@ -3,6 +3,7 @@ import { X } from 'lucide-react'
 import type { Project } from '~/content/projects/types'
 import { matchesFilters, INITIAL_FILTERS, type FilterState } from '@/sections/projects/filters'
 import FilterPanel from './components/FilterPanel'
+import MobileFilterDropdown from './components/MobileFilterDropdown'
 import FeaturedProjectCard from './components/FeaturedProjectCard'
 import ProjectGrid from './components/ProjectGrid'
 import ProjectDetailPanel from './components/ProjectDetailPanel'
@@ -126,7 +127,10 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
       {/* ── Stable workspace — unaffected by panel state ─────────────────── */}
       <FilterPanel filters={filters} onChange={setFilters} />
       <div className="flex min-h-0 flex-1 flex-col">
-        <TabBar filters={filters} onClear={() => setFilters(INITIAL_FILTERS)} />
+        <MobileFilterDropdown filters={filters} onChange={setFilters} />
+        <div className="hidden md:block">
+          <TabBar filters={filters} onClear={() => setFilters(INITIAL_FILTERS)} />
+        </div>
         <WorkspaceContent
           filtered={filtered}
           featuredProject={featuredProject}
