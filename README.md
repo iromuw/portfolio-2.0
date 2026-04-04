@@ -1,73 +1,79 @@
-# Portfolio 2.0
+# Portfolio 2.0 — Mori Wu
 
-A modern multi-language personal portfolio built with Next.js, TypeScript, Tailwind CSS, and next-i18next. The design is based on a layout by UI/UX designer [**Yanka Darelova**](https://www.darelova.com/).
+A modern personal portfolio built with Next.js, TypeScript, and Tailwind CSS. The design is inspired by a layout by UI/UX designer [**Yanka Darelova**](https://www.darelova.com/).
 
-## Project Overview
+## Features
 
-- Futuristic IDE-themed UI with an interactive Snake game on the homepage
-- Fully responsive layout
-- Internationalization (i18n) support — English and Traditional Chinese
-- Modular architecture with clear separation between pages, sections, and components
+- IDE-themed UI with VS Code-like layout (activity bar, file tree, content panels)
+- Animated intro overlay on page load — SVG logo draw animation
+- Interactive Snake game on the homepage
+- Projects showcase with filterable grid and detail panel
+- About section with file-tree navigation and syntax-highlighted code snippets (Shiki)
+- Contact page with live code preview and Web3Forms integration
+- Custom 404 page with code-block aesthetic
+- Fully responsive layout (mobile menu, adaptive panels)
 
 ## Tech Stack
 
-- [Next.js](https://nextjs.org/) — React framework (Pages Router)
+- [Next.js 15](https://nextjs.org/) — React framework (Pages Router)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/) — Utility-first CSS framework
+- [Tailwind CSS](https://tailwindcss.com/) — Utility-first CSS
+- [Shiki](https://shiki.matsu.io/) — Syntax highlighting
 - [next-i18next](https://github.com/i18next/next-i18next) — i18n for Next.js
 - [Lucide React](https://lucide.dev/) — Icon library
-- [ESLint](https://eslint.org/) — Code linting
+- [Web3Forms](https://web3forms.com/) — Contact form submissions
 
-## Multi-language Support
+## Getting Started
 
-Translations live under `public/locales/`:
-
+```bash
+npm install
+npm run dev
 ```
-public/locales/
-├── en/common.json   # English
-└── zh/common.json   # Traditional Chinese
-```
+
+Open [http://localhost:3000](http://localhost:3000).
 
 ## Project Structure
 
 ```
+├── content/                   # Static site content (TypeScript data files)
+│   ├── about/
+│   │   ├── personal/          # Bio, education, interests
+│   │   └── professional/      # Experience, skills, certificates
+│   └── projects/              # Per-project data files + shared types
 ├── public/
+│   ├── favicon.svg            # MW diamond logo (filled)
+│   ├── welcome.svg            # MW logo draw animation (intro overlay)
+│   ├── resume.pdf
 │   └── locales/
 │       ├── en/common.json
 │       └── zh/common.json
-├── src/
-│   ├── components/
-│   │   └── layout/
-│   │       ├── Layout.tsx
-│   │       ├── Navbar.tsx
-│   │       └── Footer.tsx
-│   ├── pages/
-│   │   ├── _app.tsx
-│   │   ├── _document.tsx
-│   │   ├── index.tsx
-│   │   ├── about.tsx
-│   │   ├── projects.tsx
-│   │   └── contact.tsx
-│   ├── sections/
-│   │   └── hello/
-│   │       ├── index.tsx
-│   │       ├── HeroLeft.tsx
-│   │       ├── SnakeGame.tsx
-│   │       └── GameControls.tsx
-│   └── styles/
-│       └── globals.css
-├── next-i18next.config.js
-├── next.config.ts
-├── tailwind.config.js
-└── tsconfig.json
+└── src/
+    ├── components/
+    │   ├── IntroOverlay.tsx    # Full-screen animated intro on page load
+    │   └── layout/
+    │       ├── Layout.tsx
+    │       ├── Navbar.tsx
+    │       ├── Footer.tsx
+    │       └── MobileMenu.tsx
+    ├── pages/
+    │   ├── _app.tsx
+    │   ├── _document.tsx
+    │   ├── index.tsx           # _hello — hero + Snake game
+    │   ├── about.tsx           # _about-me — IDE file explorer
+    │   ├── projects.tsx        # _projects — filterable project grid
+    │   ├── contact.tsx         # _contact-me — form + code preview
+    │   └── 404.tsx
+    ├── sections/
+    │   ├── hello/              # HeroLeft, SnakeGame, GameControls
+    │   ├── about/              # ActivityBar, FileTree, ContentPanel, SnippetCard
+    │   ├── projects/           # ProjectGrid, FeaturedProjectCard, DetailPanel, filters
+    │   └── contact/            # ContactForm, CodePreview, ContactSidebar
+    ├── lib/
+    │   └── highlight.ts        # Shiki highlight helpers
+    └── styles/
+        └── globals.css
 ```
 
 ## Design Credits
 
-UI design based on a Figma template by [**Yanka Darelova**](https://www.darelova.com/).
-
-## References
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [next-i18next Guide](https://github.com/i18next/next-i18next)
-- [Tailwind CSS Docs](https://tailwindcss.com/docs)
+UI design inspired by a Figma template by [**Yanka Darelova**](https://www.darelova.com/).

@@ -35,7 +35,9 @@ export default function Navbar() {
             'md:flex-initial md:w-[var(--left-shell-width)] md:shrink-0 md:pr-8 md:border-r md:border-[#314158]',
           ].join(' ')}
         >
-          <Link href="/" className="transition hover:text-slate-200">
+          <Link href="/" className="flex items-center gap-2 transition hover:text-slate-200">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/favicon.svg" alt="MW logo" width={18} height={18} />
             mori-wu
           </Link>
         </div>

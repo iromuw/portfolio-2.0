@@ -1,4 +1,5 @@
 import type { GetStaticProps } from 'next'
+import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import AboutSection from '@/sections/about'
 import type { HighlightedAboutData } from '@/sections/about/types'
@@ -8,7 +9,12 @@ interface AboutPageProps {
 }
 
 export default function AboutPage({ aboutData }: AboutPageProps) {
-  return <AboutSection data={aboutData} />
+  return (
+    <>
+      <Head><title>About | Mori Wu</title></Head>
+      <AboutSection data={aboutData} />
+    </>
+  )
 }
 
 export const getStaticProps: GetStaticProps<AboutPageProps> = async ({ locale }) => {

@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 240" width="320" height="240">
+  <!--
+    Mori Wu — MW Logo (filled, animated)
+    Transparent background
+    Animation B: left diamond drops from above → right diamond rises from below → inner pops
+
+    Geometry (centered, 30px padding all sides):
+      viewBox: 320 × 240
+      Left diamond  center (110,110), half=80: T(110,30)  R(190,110) B(110,190) L(30,110)
+      Right diamond center (210,110), half=80: T(210,30)  R(290,110) B(210,190) L(130,110)
+      Overlap = 60px
+
+      cross_top = (160, 80)
+      cross_bot = (160, 140)
+      Inner diamond: T(160,80) R(190,110) B(160,140) L(130,110)
+  -->
+  <style>
+    /* Left diamond: drops from above */
+    #left {
+      animation: drop .55s cubic-bezier(.4,0,.15,1) .1s both;
+    }
+    /* Right diamond: rises from below */
+    #right {
+      animation: rise .55s cubic-bezier(.4,0,.15,1) .32s both;
+    }
+    /* Inner diamond: pops from center after both settle */
+    #inner {
+      transform-origin: 160px 110px;
+      transform-box: fill-box;
+      animation: pop .35s cubic-bezier(.34,1.56,.64,1) .75s both;
+    }
+    /* Name fades in last */
+    #nm {
+      animation: fadeup .4s ease 1.05s both;
+    }
+
+    @keyframes drop {
+      from { transform: translateY(-50px); opacity: 0; }
+      to   { transform: translateY(0);     opacity: 1; }
+    }
+    @keyframes rise {
+      from { transform: translateY(50px);  opacity: 0; }
+      to   { transform: translateY(0);     opacity: 1; }
+    }
+    @keyframes pop {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+    @keyframes fadeup {
+      from { opacity: 0; transform: translateY(5px); }
+      to   { opacity: 1; transform: translateY(0);   }
+    }
+  </style>
+
+  <!-- Left diamond (drops from above) -->
+  <polygon id="left"
+    points="110,30  190,110  110,190  30,110"
+    fill="#2dd4bf
+"/>
+
+  <!-- Right diamond (rises from below) -->
+  <polygon id="right"
+    points="210,30  290,110  210,190  130,110"
+    fill="#2dd4bf
+"/>
+
+  <!-- Inner overlap diamond (pops) -->
+  <polygon id="inner"
+    points="160,80  190,110  160,140  130,110"
+    fill="#25C1AC
+"/>
+
+  <!-- Name -->
+  <text id="nm"
+    x="160" y="226"
+    font-family="'Courier New', Courier, monospace"
+    font-size="11"
+    letter-spacing="6"
+    fill="#2dd4bf
+"
+    text-anchor="middle"
+    opacity="0">MORI WU</text>
+
+</svg>

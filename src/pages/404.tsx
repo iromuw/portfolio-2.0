@@ -1,9 +1,12 @@
 import Link from 'next/link'
+import Head from 'next/head'
 import { GetStaticProps } from 'next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export default function NotFoundPage() {
   return (
+    <>
+      <Head><title>404 | Mori Wu</title></Head>
     <div className="flex min-h-0 flex-1 items-center justify-center px-8 py-16">
       <div className="flex w-full max-w-4xl flex-col items-center gap-10 md:flex-row md:items-center md:gap-16">
 
@@ -101,6 +104,7 @@ export default function NotFoundPage() {
 
       </div>
     </div>
+    </>
   )
 }
 
