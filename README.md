@@ -1,5 +1,7 @@
 # Portfolio 2.0 — Mori Wu
 
+![moriwu.com](public/moriwu.com_.png)
+
 A modern personal portfolio built with Next.js, TypeScript, and Tailwind CSS. The design is inspired by a layout by UI/UX designer [**Yanka Darelova**](https://www.darelova.com/).
 
 ## Features
