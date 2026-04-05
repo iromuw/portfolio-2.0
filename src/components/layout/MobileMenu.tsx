@@ -2,12 +2,13 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { X } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics'
 
 const ALL_TABS = [
-  { key: '_hello', href: '/' },
-  { key: '_about-me', href: '/about' },
-  { key: '_projects', href: '/projects' },
-  { key: '_contact-me', href: '/contact' },
+  { key: '_hello', href: '/', event: 'click_nav_home' },
+  { key: '_about-me', href: '/about', event: 'click_nav_about' },
+  { key: '_projects', href: '/projects', event: 'click_nav_projects' },
+  { key: '_contact-me', href: '/contact', event: 'click_nav_contact' },
 ]
 
 function isActive(href: string, pathname: string) {
@@ -76,6 +77,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <Link
               key={tab.key}
               href={tab.href}
+              onClick={() => trackEvent(tab.event)}
               style={{
                 transitionDelay: isOpen ? `${60 + i * 55}ms` : '0ms',
               }}

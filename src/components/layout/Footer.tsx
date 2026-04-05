@@ -1,4 +1,5 @@
 import { useTranslation } from 'next-i18next'
+import { trackExternalLink } from '@/lib/trackExternalLink'
 
 function LinkedinIcon() {
   return (
@@ -30,6 +31,7 @@ export default function Footer() {
           target="_blank"
           rel="noreferrer"
           aria-label="LinkedIn"
+          onClick={() => trackExternalLink('linkedin', 'footer')}
         >
           <LinkedinIcon />
         </a>
@@ -45,6 +47,7 @@ export default function Footer() {
         target="_blank"
         rel="noreferrer"
         aria-label="GitHub"
+        onClick={() => trackExternalLink('github', 'footer')}
       >
         <span className="hidden md:inline">@iromuw</span>
         <GithubIcon />

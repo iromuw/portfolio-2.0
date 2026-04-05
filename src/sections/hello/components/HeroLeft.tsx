@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { Download, FolderOpen } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics'
 
 export default function HeroLeft() {
   const { t } = useTranslation('common')
@@ -46,6 +47,7 @@ export default function HeroLeft() {
       <div className="flex flex-wrap gap-3">
         <Link
           href="/projects"
+          onClick={() => trackEvent('click_hero_cta', { cta: 'view_projects' })}
           className="flex items-center gap-2 rounded border border-teal-500/50 bg-teal-500/[0.08] px-4 py-2 font-mono text-sm text-teal-400 transition-all duration-300 hover:border-teal-400/70 hover:bg-teal-500/[0.14] hover:shadow-[0_0_16px_rgba(64,224,208,0.20)]"
         >
           <FolderOpen size={14} />
@@ -54,6 +56,7 @@ export default function HeroLeft() {
         <a
           href="/Moyun_Wu_Resume.pdf"
           download
+          onClick={() => trackEvent('click_hero_cta', { cta: 'download_cv' })}
           className="flex items-center gap-2 rounded border border-[#314158] px-4 py-2 font-mono text-sm text-slate-400 transition hover:border-slate-500 hover:text-slate-200"
         >
           <Download size={14} />

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import type { FormEvent } from 'react'
 import { Mail, Phone } from 'lucide-react'
 import type { Form, Status } from './types'
@@ -8,12 +8,18 @@ import { ContactSidebar } from './components/ContactSidebar'
 import { ContactForm } from './components/ContactForm'
 import { CodePreview } from './components/CodePreview'
 import { SuccessState } from './components/SuccessState'
+import { trackEvent } from '@/lib/analytics'
+import { trackExternalLink } from '@/lib/trackExternalLink'
 
 const EMPTY_FORM: Form = { name: '', email: '', message: '' }
 
 export default function ContactSection() {
   const [form, setForm] = useState<Form>(EMPTY_FORM)
   const [status, setStatus] = useState<Status>('idle')
+
+  useEffect(() => {
+    trackEvent('view_contact_section')
+  }, [])
 
   const canSubmit = !!(form.name.trim() && isValidEmail(form.email) && form.message.trim())
 
@@ -53,6 +59,7 @@ export default function ContactSection() {
         <div className="flex flex-wrap items-center gap-x-6 gap-y-1 border-b border-[#314158] px-4 py-3 md:hidden">
           <a
             href={`mailto:${CONTACT_EMAIL}`}
+            onClick={() => trackExternalLink('email', 'contact')}
             className="flex items-center gap-2 font-mono text-xs text-slate-400 transition hover:text-teal-400"
           >
             <Mail size={12} className="shrink-0" />

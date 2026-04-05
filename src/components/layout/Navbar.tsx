@@ -3,14 +3,15 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { Menu } from 'lucide-react'
 import MobileMenu from './MobileMenu'
+import { trackEvent } from '@/lib/analytics'
 
 const CENTER_TABS = [
-  { key: '_hello', href: '/' },
-  { key: '_about-me', href: '/about' },
-  { key: '_projects', href: '/projects' },
+  { key: '_hello', href: '/', event: 'click_nav_home' },
+  { key: '_about-me', href: '/about', event: 'click_nav_about' },
+  { key: '_projects', href: '/projects', event: 'click_nav_projects' },
 ]
 
-const CONTACT_TAB = { key: '_contact-me', href: '/contact' }
+const CONTACT_TAB = { key: '_contact-me', href: '/contact', event: 'click_nav_contact' }
 
 function isActive(href: string, pathname: string) {
   if (href === '/') return pathname === '/'
@@ -50,6 +51,7 @@ export default function Navbar() {
               <Link
                 key={tab.key}
                 href={tab.href}
+                onClick={() => trackEvent(tab.event)}
                 className={[
                   'relative shrink-0 border-r border-[#314158] px-8 py-3 transition',
                   active
@@ -74,6 +76,7 @@ export default function Navbar() {
           {/* Contact tab — desktop only */}
           <Link
             href={CONTACT_TAB.href}
+            onClick={() => trackEvent(CONTACT_TAB.event)}
             className={[
               'hidden md:block relative shrink-0 border-l border-[#314158] px-8 py-3 transition',
               isActive(CONTACT_TAB.href, pathname)
