@@ -1,9 +1,12 @@
-import { memo } from 'react'
+import { memo, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { Github, ExternalLink } from 'lucide-react'
 import type { Project } from '~/content/projects/types'
 import StatusBadge from './StatusBadge'
 import ProjectTag from './ProjectTag'
+import { trackEvent } from '@/lib/analytics'
+import { trackExternalLink } from '@/lib/trackExternalLink'
+import { signalEngagement } from '@/lib/engagementSignal'
 
 const MAX_VISIBLE_TAGS = 4
 
@@ -16,13 +19,46 @@ function ProjectCard({ project, onSelect }: ProjectCardProps) {
   const visibleTags = project.techStack.slice(0, MAX_VISIBLE_TAGS)
   const overflowCount = project.techStack.length - MAX_VISIBLE_TAGS
 
+  const cardRef = useRef<HTMLElement>(null)
+  const viewTracked = useRef(false)
+
+  useEffect(() => {
+    const el = cardRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !viewTracked.current) {
+          viewTracked.current = true
+          trackEvent('view_project_card', { project_name: project.title })
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.4 },
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [project.title])
+
   return (
     <article
+      ref={cardRef}
       className="group flex cursor-pointer flex-col overflow-hidden rounded-lg border border-[#314158] bg-[#0b1225] transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-slate-600 hover:shadow-[0_8px_32px_rgba(0,0,0,0.45)]"
-      onClick={() => onSelect(project)}
+      onClick={() => {
+        trackEvent('click_project_card', { project_name: project.title })
+        signalEngagement('project_clicked')
+        onSelect(project)
+      }}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onSelect(project) }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          trackEvent('click_project_card', { project_name: project.title })
+          signalEngagement('project_clicked')
+          onSelect(project)
+        }
+      }}
     >
       {/* Image */}
       <div className="relative h-40 overflow-hidden bg-[#060d1c]">
@@ -84,7 +120,7 @@ function ProjectCard({ project, onSelect }: ProjectCardProps) {
                 href={project.links.github}
                 target="_blank"
                 rel="noreferrer"
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => { e.stopPropagation(); trackExternalLink('github', 'project_card', { project_name: project.title }) }}
                 className="text-slate-600 transition hover:text-slate-300"
                 aria-label="Github"
               >
@@ -96,7 +132,7 @@ function ProjectCard({ project, onSelect }: ProjectCardProps) {
                 href={project.links.liveDemo}
                 target="_blank"
                 rel="noreferrer"
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e) => { e.stopPropagation(); trackExternalLink('live_demo', 'project_card', { project_name: project.title }) }}
                 className="text-slate-600 transition hover:text-slate-300"
                 aria-label="Live Demo"
               >

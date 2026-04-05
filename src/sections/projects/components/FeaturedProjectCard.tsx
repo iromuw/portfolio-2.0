@@ -1,9 +1,12 @@
-import { memo } from 'react'
+import { memo, useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { ArrowRight, Github, ExternalLink } from 'lucide-react'
 import type { Project } from '~/content/projects/types'
 import StatusBadge from './StatusBadge'
 import ProjectTag from './ProjectTag'
+import { trackEvent } from '@/lib/analytics'
+import { trackExternalLink } from '@/lib/trackExternalLink'
+import { signalEngagement } from '@/lib/engagementSignal'
 
 interface FeaturedProjectCardProps {
   project: Project
@@ -11,13 +14,46 @@ interface FeaturedProjectCardProps {
 }
 
 function FeaturedProjectCard({ project, onSelect }: FeaturedProjectCardProps) {
+  const cardRef = useRef<HTMLElement>(null)
+  const viewTracked = useRef(false)
+
+  useEffect(() => {
+    const el = cardRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !viewTracked.current) {
+          viewTracked.current = true
+          trackEvent('view_project_card', { project_name: project.title })
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.3 },
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [project.title])
+
   return (
     <article
+      ref={cardRef}
       className="group cursor-pointer overflow-hidden rounded-xl border border-[#314158] bg-gradient-to-br from-[#0e1c36]/80 to-[#0b1225] transition-[border-color,box-shadow] duration-200 hover:border-slate-600 hover:shadow-[0_8px_40px_rgba(0,0,0,0.5)]"
-      onClick={() => onSelect(project)}
+      onClick={() => {
+        trackEvent('click_project_card', { project_name: project.title })
+        signalEngagement('project_clicked')
+        onSelect(project)
+      }}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onSelect(project) }}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          trackEvent('click_project_card', { project_name: project.title })
+          signalEngagement('project_clicked')
+          onSelect(project)
+        }
+      }}
     >
       <div className="grid md:grid-cols-[1fr_380px]">
 
@@ -76,7 +112,7 @@ function FeaturedProjectCard({ project, onSelect }: FeaturedProjectCardProps) {
                   href={project.links.github}
                   target="_blank"
                   rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => { e.stopPropagation(); trackExternalLink('github', 'project_card', { project_name: project.title }) }}
                   className="flex items-center gap-1.5 rounded border border-[#314158] px-3 py-1.5 font-mono text-xs text-slate-400 transition hover:border-slate-500 hover:text-slate-200"
                 >
                   <Github size={11} />
@@ -88,7 +124,7 @@ function FeaturedProjectCard({ project, onSelect }: FeaturedProjectCardProps) {
                   href={project.links.liveDemo}
                   target="_blank"
                   rel="noreferrer"
-                  onClick={(e) => e.stopPropagation()}
+                  onClick={(e) => { e.stopPropagation(); trackExternalLink('live_demo', 'project_card', { project_name: project.title }) }}
                   className="flex items-center gap-1.5 rounded border border-[#314158] px-3 py-1.5 font-mono text-xs text-slate-400 transition hover:border-slate-500 hover:text-slate-200"
                 >
                   <ExternalLink size={11} />
