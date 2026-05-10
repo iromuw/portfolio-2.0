@@ -9,13 +9,13 @@ export const near: Project = {
     "Implemented nearly all front-end pages based on design specifications, including the homepage's interactive word cloud visualisation and a multi-level hierarchical selector for browsing agencies. Supported multilingual content, secure form interactions, and integrated Google Maps for location-based features.",
   category: ['Frontend'],
   role: 'Frontend Developer',
-  year: '2023',
+  year: '2021',
   status: 'Production',
   techStack: ['Vue', 'SCSS', 'i18n', 'reCAPTCHA', 'Google Maps API'],
   tags: ['Government', 'Data Visualization'],
   image: '/projects/near/cover.png',
   links: {
-    caseStudy: '/projects/near',
+    liveDemo: 'https://near.archives.gov.tw/home',
   },
   contributions: [
     'Built an interactive word cloud on the homepage enabling exploratory browsing of archive topics.',

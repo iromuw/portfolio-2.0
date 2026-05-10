@@ -40,10 +40,12 @@ export const FILTER_GROUPS: FilterGroup[] = [
     options: [
       'React / React Native',
       'Vue',
+      'Next.js',
       'TypeScript',
       'Tailwind',
       'FastAPI / Node.js',
       'PostgreSQL',
+      'Prisma',
       'Figma',
     ],
   },

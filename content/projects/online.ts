@@ -9,7 +9,7 @@ export const online: Project = {
     'Participated across the full development lifecycle, from requirements analysis and UI/UX design to front-end implementation. Built features such as document submission, approval flows, and role-based permission systems. Replaced traditional paper-based processes with a centralised digital solution.',
   category: ['Full-stack', 'Frontend'],
   role: 'Frontend Developer',
-  year: '2023',
+  year: '2022',
   status: 'Production',
   techStack: ['Vue', 'SCSS', 'Moment.js', 'Chartist.js', 'SpreadJS'],
   tags: ['Government', 'Workflow System'],
