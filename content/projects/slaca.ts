@@ -10,14 +10,14 @@ export const slaca: Project = {
   category: ['Full-stack', 'Frontend'],
   role: 'Frontend Developer',
   year: '2025',
-  status: 'Featured',
+  status: 'Academic',
   techStack: ['Expo', 'TypeScript', 'React Native', 'Tailwind CSS', 'FastAPI', 'RAG'],
   tags: ['AI', 'Mobile', 'UX'],
   image: '/projects/slaca/cover.png',
   links: {
     caseStudy: '/projects/slaca',
   },
-  featured: true,
+  featured: false,
   contributions: [
     'Led all front-end development using Expo and React Native, owning the full component architecture.',
     'Designed and built the AI chatbot interface with streaming responses integrated via FastAPI.',

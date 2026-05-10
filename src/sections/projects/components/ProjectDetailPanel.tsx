@@ -76,7 +76,7 @@ export default function ProjectDetailPanel({ project, onClose }: ProjectDetailPa
 
           {/* Cover image */}
           {project.image && (
-            <div className="relative h-44 overflow-hidden rounded-lg bg-[#060d1c]">
+            <div className="relative h-56 overflow-hidden rounded-lg bg-[#060d1c]">
               <Image
                 src={project.image}
                 alt={project.title}

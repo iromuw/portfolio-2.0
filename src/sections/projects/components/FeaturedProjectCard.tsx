@@ -58,7 +58,7 @@ function FeaturedProjectCard({ project, onSelect }: FeaturedProjectCardProps) {
       <div className="grid md:grid-cols-[1fr_380px]">
 
         {/* Image */}
-        <div className="relative min-h-[200px] overflow-hidden bg-[#060d1c] md:min-h-[280px]">
+        <div className="relative min-h-[500px] overflow-hidden bg-[#060d1c] md:min-h-[500px]">
           {project.image ? (
             <Image
               src={project.image}
