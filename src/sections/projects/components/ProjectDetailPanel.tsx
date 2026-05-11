@@ -76,13 +76,13 @@ export default function ProjectDetailPanel({ project, onClose }: ProjectDetailPa
 
           {/* Cover image */}
           {project.image && (
-            <div className="relative h-56 overflow-hidden rounded-lg bg-[#060d1c]">
+            <div className="relative h-56 overflow-hidden rounded-lg bg-[#0c1526]">
               <Image
                 src={project.image}
                 alt={project.title}
                 fill
                 sizes="(max-width: 768px) 100vw, 460px"
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           )}
