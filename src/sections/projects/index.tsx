@@ -151,12 +151,12 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
         aria-hidden
       />
 
-      {/* Detail panel — slides in from the right */}
+      {/* Detail panel — rises from the bottom, full screen */}
       <div
         className={[
-          'absolute inset-y-0 right-0 z-20 w-full sm:w-[460px] md:w-[500px]',
-          'transition-transform duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
-          isPanelOpen ? 'translate-x-0' : 'translate-x-full',
+          'absolute inset-0 z-20',
+          'transition-transform duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)]',
+          isPanelOpen ? 'translate-y-0' : 'translate-y-full',
         ].join(' ')}
       >
         {panelProject && (

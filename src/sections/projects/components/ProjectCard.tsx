@@ -61,7 +61,7 @@ function ProjectCard({ project, onSelect }: ProjectCardProps) {
       }}
     >
       {/* Image */}
-      <div className="relative h-40 overflow-hidden bg-[#060d1c]">
+      <div className="relative w-full overflow-hidden rounded-lg bg-[#060d1c]" style={{ aspectRatio: '16 / 9' }}>
         {project.image ? (
           <Image
             src={project.image}

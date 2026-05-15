@@ -58,7 +58,7 @@ function FeaturedProjectCard({ project, onSelect }: FeaturedProjectCardProps) {
       <div className="grid md:grid-cols-[1fr_380px]">
 
         {/* Image */}
-        <div className="relative min-h-[280px] overflow-hidden bg-[#060d1c] md:min-h-[360px]">
+        <div className="relative w-full overflow-hidden rounded-lg bg-[#060d1c]" style={{ aspectRatio: '16 / 9' }}>
           {project.image ? (
             <Image
               src={project.image}
@@ -68,7 +68,7 @@ function FeaturedProjectCard({ project, onSelect }: FeaturedProjectCardProps) {
               className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
             />
           ) : (
-            <div className="flex h-full min-h-[200px] items-end bg-gradient-to-br from-[#111e38] to-[#060d1c] p-6 md:min-h-[280px]">
+            <div className="flex h-full items-end bg-gradient-to-br from-[#111e38] to-[#060d1c] p-6">
               <p className="font-mono text-xs text-slate-700">{'// cover coming soon'}</p>
             </div>
           )}

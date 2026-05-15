@@ -6,6 +6,15 @@ export interface ProjectLinks {
 
 export type ProjectStatus = 'Featured' | 'Production' | 'Design' | 'Academic'
 
+export type CaseStudySection = {
+  type: 'text' | 'image' | 'image-grid' | 'compare'
+  title?: string
+  content?: string
+  image?: string
+  images?: string[]
+  caption?: string
+}
+
 export interface Project {
   slug: string
   title: string
@@ -25,4 +34,8 @@ export interface Project {
   features?: string[]
   challenges?: string
   gallery?: string[]
+  caseStudy?: {
+    overview: string
+    sections: CaseStudySection[]
+  }
 }
