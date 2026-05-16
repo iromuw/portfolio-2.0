@@ -4,7 +4,6 @@ import type { Project } from '~/content/projects/types'
 import { matchesFilters, INITIAL_FILTERS, type FilterState } from '@/sections/projects/filters'
 import FilterPanel from './components/FilterPanel'
 import MobileFilterDropdown from './components/MobileFilterDropdown'
-import FeaturedProjectCard from './components/FeaturedProjectCard'
 import ProjectGrid from './components/ProjectGrid'
 import ProjectDetailPanel from './components/ProjectDetailPanel'
 
@@ -42,32 +41,22 @@ function TabBar({ filters, onClear }: { filters: FilterState; onClear: () => voi
 // panel open/close, which eliminates CSS-transition re-triggers on the cards.
 
 interface WorkspaceContentProps {
-  filtered: Project[]
-  featuredProject: Project | undefined
-  gridProjects: Project[]
+  projects: Project[]
   onSelect: (project: Project) => void
 }
 
-const WorkspaceContent = memo(function WorkspaceContent({
-  filtered,
-  featuredProject,
-  gridProjects,
-  onSelect,
-}: WorkspaceContentProps) {
+const WorkspaceContent = memo(function WorkspaceContent({ projects, onSelect }: WorkspaceContentProps) {
   return (
     <div className="flex-1 overflow-y-auto" data-scroll-container>
-      {filtered.length === 0 ? (
+      {projects.length === 0 ? (
         <div className="flex h-full items-center justify-center">
           <p className="font-mono text-xs text-slate-700">
             {'// no projects match the selected filters'}
           </p>
         </div>
       ) : (
-        <div className="flex flex-col gap-6 p-6">
-          {featuredProject && (
-            <FeaturedProjectCard project={featuredProject} onSelect={onSelect} />
-          )}
-          <ProjectGrid projects={gridProjects} onSelect={onSelect} />
+        <div className="p-6">
+          <ProjectGrid projects={projects} onSelect={onSelect} />
         </div>
       )}
     </div>
@@ -87,16 +76,13 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
     [projects, filters],
   )
 
-  // useMemo ensures stable references so WorkspaceContent's memo is not defeated
-  // by new array/object references on every panel-state re-render
-  const featuredProject = useMemo(
-    () => filtered.find((p) => p.featured),
-    [filtered],
-  )
-  const gridProjects = useMemo(
-    () => filtered.filter((p) => !p.featured),
-    [filtered],
-  )
+  // Featured projects first, then the rest — stable reference so WorkspaceContent
+  // memo is not defeated by new array references on panel-state re-renders
+  const orderedProjects = useMemo(() => {
+    const featured = filtered.filter((p) => p.featured)
+    const rest = filtered.filter((p) => !p.featured)
+    return [...featured, ...rest]
+  }, [filtered])
 
   // Open or switch panel without closing/reopening
   const handleSelect = useCallback((project: Project) => {
@@ -132,9 +118,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
           <TabBar filters={filters} onClear={() => setFilters(INITIAL_FILTERS)} />
         </div>
         <WorkspaceContent
-          filtered={filtered}
-          featuredProject={featuredProject}
-          gridProjects={gridProjects}
+          projects={orderedProjects}
           onSelect={handleSelect}
         />
       </div>

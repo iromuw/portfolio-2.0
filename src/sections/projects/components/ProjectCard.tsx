@@ -13,9 +13,10 @@ const MAX_VISIBLE_TAGS = 4
 interface ProjectCardProps {
   project: Project
   onSelect: (project: Project) => void
+  isFeatured?: boolean
 }
 
-function ProjectCard({ project, onSelect }: ProjectCardProps) {
+function ProjectCard({ project, onSelect, isFeatured = false }: ProjectCardProps) {
   const visibleTags = project.techStack.slice(0, MAX_VISIBLE_TAGS)
   const overflowCount = project.techStack.length - MAX_VISIBLE_TAGS
 
@@ -44,7 +45,7 @@ function ProjectCard({ project, onSelect }: ProjectCardProps) {
   return (
     <article
       ref={cardRef}
-      className="group flex cursor-pointer flex-col overflow-hidden rounded-lg border border-[#314158] bg-[#0b1225] transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-slate-600 hover:shadow-[0_8px_32px_rgba(0,0,0,0.45)]"
+      className={`group flex cursor-pointer flex-col overflow-hidden rounded-lg bg-[#0b1225] transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-0.5 hover:border-slate-600 hover:shadow-[0_8px_32px_rgba(0,0,0,0.45)] ${isFeatured ? 'border border-[#4ecca3]/20 shadow-[0_0_48px_12px_rgba(78,204,163,0.07)]' : 'border border-[#314158]'}`}
       onClick={() => {
         trackEvent('click_project_card', { project_name: project.title })
         signalEngagement('project_clicked')
@@ -75,7 +76,7 @@ function ProjectCard({ project, onSelect }: ProjectCardProps) {
             <p className="font-mono text-[10px] text-slate-800">{'// no cover'}</p>
           </div>
         )}
-        <div className="absolute right-2 top-2">
+        <div className="absolute right-3 top-3">
           <StatusBadge status={project.status} />
         </div>
       </div>

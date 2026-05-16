@@ -27,7 +27,7 @@ export const FILTER_GROUPS: FilterGroup[] = [
   {
     key: 'type',
     label: 'Type',
-    options: ['Production', 'Case Study', 'Design', 'Academic'],
+    options: ['Production', 'Side Project', 'Design', 'Academic'],
   },
   {
     key: 'domain',
@@ -75,7 +75,7 @@ export function matchesFilters(project: Project, filters: FilterState): boolean 
 
   if (filters.type.length > 0) {
     const typeMatch = filters.type.some((t) => {
-      if (t === 'Case Study') return !!project.links.caseStudy
+      if (t === 'Side Project') return !!project.links.caseStudy
       return project.status === t
     })
     if (!typeMatch) return false

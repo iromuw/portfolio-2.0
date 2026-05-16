@@ -13,7 +13,7 @@ function ProjectGrid({ projects, onSelect }: ProjectGridProps) {
   return (
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {projects.map((project) => (
-        <ProjectCard key={project.slug} project={project} onSelect={onSelect} />
+        <ProjectCard key={project.slug} project={project} onSelect={onSelect} isFeatured={project.featured} />
       ))}
     </div>
   )
