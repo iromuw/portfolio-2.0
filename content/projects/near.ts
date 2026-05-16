@@ -6,7 +6,7 @@ export const near: Project = {
   summary:
     'A government-facing platform for accessing archival records in Taiwan.',
   description:
-    "Implemented nearly all front-end pages based on design specifications, including the homepage's interactive word cloud visualisation and a multi-level hierarchical selector for browsing agencies. Supported multilingual content, secure form interactions, and integrated Google Maps for location-based features.",
+    'Took over static HTML deliverables from an external design agency and integrated them into a Vue architecture, translating pixel-perfect layouts into dynamic, interactive pages. Responsible for nearly 90% of all front-end implementation, including custom interactive components built without interaction specifications.',
   category: ['Frontend'],
   role: 'Frontend Developer',
   year: '2021',
@@ -18,11 +18,11 @@ export const near: Project = {
     liveDemo: 'https://near.archives.gov.tw/home',
   },
   contributions: [
-    'Built an interactive word cloud on the homepage enabling exploratory browsing of archive topics.',
-    'Implemented a multi-level hierarchical agency selector for navigating government organisation structures.',
-    'Delivered full-page implementations from Figma designs across the entire front-end.',
-    'Integrated Vue i18n for full Traditional Chinese / English language support.',
-    'Set up Google Maps API for location-based archival record discovery.',
+    'Delivered nearly 90% of all front-end implementation independently, integrating static agency-designed HTML into a fully dynamic Vue architecture.',
+    'Designed and built an interactive word cloud from scratch with no interaction spec, interpreting static visuals into a functional exploratory browsing experience for archive topics.',
+    'Implemented a multi-level hierarchical agency selector for navigating complex government organisation structures, self-directed from layout to interaction logic.',
+    'Integrated Vue i18n for full Traditional Chinese and English language support across all pages.',
+    'Set up Google Maps API for location-based archival record discovery and reCAPTCHA for secure form submissions.',
   ],
   features: [
     'Interactive word cloud for exploring archive subject matter',
@@ -32,5 +32,5 @@ export const near: Project = {
     'reCAPTCHA-protected secure form submissions',
   ],
   challenges:
-    'Rendering a performant, interactive word cloud and a hierarchical menu displaying thousands of file-related keywords which required custom weight normalisation and responsive canvas sizing.',
+    'Translating static agency-designed mockups into dynamic interactions without any interaction specifications, requiring independent judgement on behaviour, animation, and state management while preserving the original visual design intent.',
 }

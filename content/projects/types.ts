@@ -7,11 +7,10 @@ export interface ProjectLinks {
 export type ProjectStatus = 'Featured' | 'Production' | 'Design' | 'Academic'
 
 export type CaseStudySection = {
-  type: 'text' | 'image' | 'image-grid' | 'compare'
+  type: 'text' | 'image' | 'compare'
   title?: string
   content?: string
   image?: string
-  images?: string[]
   caption?: string
 }
 

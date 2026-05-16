@@ -53,13 +53,10 @@ export const slaca: Project = {
         caption: 'Figma component library covering typography, colour tokens, and UI primitives',
       },
       {
-        type: 'image-grid',
+        type: 'image',
         title: 'Key Screens',
-        images: [
-          '/projects/slaca/circle.png',
-          '/projects/slaca/subject.png',
-          '/projects/slaca/me.png',
-        ],
+        image: '/projects/slaca/key-screens.png',
+        caption: 'Key screens across Circle, Study, and Me modules',
       },
       {
         type: 'compare',

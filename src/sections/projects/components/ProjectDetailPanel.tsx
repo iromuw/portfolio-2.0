@@ -31,12 +31,8 @@ function DetailRow({ label, value }: { label: string; value: string }) {
 function CaseStudySectionBlock({ section }: { section: CaseStudySection }) {
   if (section.type === 'text') {
     return (
-      <section className="space-y-3">
-        {section.title && (
-          <h3 className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-400">
-            {section.title}
-          </h3>
-        )}
+      <section>
+        {section.title && <SectionLabel>{section.title}</SectionLabel>}
         {section.content && (
           <p className="font-mono text-sm leading-relaxed text-slate-400">{section.content}</p>
         )}
@@ -46,56 +42,28 @@ function CaseStudySectionBlock({ section }: { section: CaseStudySection }) {
 
   if (section.type === 'image') {
     return (
-      <section className="space-y-3">
-        {section.title && (
-          <h3 className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-400">
-            {section.title}
-          </h3>
-        )}
-        {section.content && (
-          <p className="font-mono text-sm leading-relaxed text-slate-400">{section.content}</p>
-        )}
-        {section.image && (
-          <div className="space-y-2">
-            <div className="relative w-full overflow-hidden rounded-lg bg-[#0d1b2e]" style={{ paddingBottom: '56.25%' }}>
-              <Image
-                src={section.image}
-                alt={section.title ?? ''}
-                fill
-                sizes="(max-width: 768px) 100vw, 900px"
-                className="object-contain"
-              />
+      <section>
+        {section.title && <SectionLabel>{section.title}</SectionLabel>}
+        <div className="space-y-3">
+          {section.content && (
+            <p className="font-mono text-sm leading-relaxed text-slate-400">{section.content}</p>
+          )}
+          {section.image && (
+            <div className="space-y-2">
+              <div className="relative w-full overflow-hidden rounded-lg bg-[#0C1526]" style={{ paddingBottom: '56.25%' }}>
+                <Image
+                  src={section.image}
+                  alt={section.title ?? ''}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 900px"
+                  className="object-contain"
+                />
+              </div>
+              {section.caption && (
+                <p className="font-mono text-[10px] text-slate-600">{section.caption}</p>
+              )}
             </div>
-            {section.caption && (
-              <p className="font-mono text-[10px] text-slate-600">{section.caption}</p>
-            )}
-          </div>
-        )}
-      </section>
-    )
-  }
-
-  if (section.type === 'image-grid') {
-    const cols = section.images && section.images.length === 2 ? 'grid-cols-2' : 'grid-cols-3'
-    return (
-      <section className="space-y-3">
-        {section.title && (
-          <h3 className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-400">
-            {section.title}
-          </h3>
-        )}
-        <div className={`grid gap-3 ${cols}`}>
-          {section.images?.map((src, i) => (
-            <div key={i} className="relative overflow-hidden rounded-lg bg-[#0d1b2e]" style={{ paddingBottom: '177%' }}>
-              <Image
-                src={src}
-                alt={`${section.title ?? 'image'} ${i + 1}`}
-                fill
-                sizes="(max-width: 768px) 33vw, 300px"
-                className="object-cover"
-              />
-            </div>
-          ))}
+          )}
         </div>
       </section>
     )
@@ -103,26 +71,24 @@ function CaseStudySectionBlock({ section }: { section: CaseStudySection }) {
 
   if (section.type === 'compare') {
     return (
-      <section className="space-y-3">
-        {section.title && (
-          <h3 className="font-mono text-xs font-semibold uppercase tracking-widest text-slate-400">
-            {section.title}
-          </h3>
-        )}
-        {section.content && (
-          <p className="font-mono text-sm leading-relaxed text-slate-400">{section.content}</p>
-        )}
-        {section.image && (
-          <div className="relative w-full overflow-hidden rounded-lg bg-[#0d1b2e]" style={{ paddingBottom: '56.25%' }}>
-            <Image
-              src={section.image}
-              alt={section.title ?? 'compare'}
-              fill
-              sizes="(max-width: 768px) 100vw, 900px"
-              className="object-contain"
-            />
-          </div>
-        )}
+      <section>
+        {section.title && <SectionLabel>{section.title}</SectionLabel>}
+        <div className="space-y-3">
+          {section.content && (
+            <p className="font-mono text-sm leading-relaxed text-slate-400">{section.content}</p>
+          )}
+          {section.image && (
+            <div className="relative w-full overflow-hidden rounded-lg bg-[#0C1526]" style={{ paddingBottom: '56.25%' }}>
+              <Image
+                src={section.image}
+                alt={section.title ?? 'compare'}
+                fill
+                sizes="(max-width: 768px) 100vw, 900px"
+                className="object-contain"
+              />
+            </div>
+          )}
+        </div>
       </section>
     )
   }
@@ -135,10 +101,10 @@ function CaseStudySectionBlock({ section }: { section: CaseStudySection }) {
 function CaseStudyLayout({ project }: { project: Project }) {
   const cs = project.caseStudy!
   return (
-    <div className="mx-auto w-full max-w-3xl space-y-10 px-6 py-8 md:px-10">
+    <div className="mx-auto w-full max-w-3xl space-y-8 px-6 py-8 md:px-10">
       {/* Cover image */}
       {project.image && (
-        <div className="relative w-full overflow-hidden rounded-lg bg-[#0d1b2e]" style={{ paddingBottom: '56.25%' }}>
+        <div className="relative w-full overflow-hidden rounded-lg bg-[#0C1526]" style={{ paddingBottom: '56.25%' }}>
           <Image
             src={project.image}
             alt={project.title}
@@ -150,7 +116,7 @@ function CaseStudyLayout({ project }: { project: Project }) {
       )}
 
       {/* Overview */}
-      <section className="space-y-3">
+      <section>
         <SectionLabel>Overview</SectionLabel>
         <p className="font-mono text-sm leading-relaxed text-slate-400">{cs.overview}</p>
       </section>
@@ -191,11 +157,11 @@ function CaseStudyLayout({ project }: { project: Project }) {
 
 function SummaryLayout({ project }: { project: Project }) {
   return (
-    <div className="mx-auto w-full max-w-3xl space-y-6 px-6 py-8 md:px-10">
+    <div className="mx-auto w-full max-w-3xl space-y-8 px-6 py-8 md:px-10">
 
       {/* Cover image */}
       {project.image && (
-        <div className="relative h-56 overflow-hidden rounded-lg bg-[#0c1526]">
+        <div className="relative w-full overflow-hidden rounded-lg bg-[#0C1526]" style={{ paddingBottom: '56.25%' }}>
           <Image
             src={project.image}
             alt={project.title}
@@ -209,7 +175,7 @@ function SummaryLayout({ project }: { project: Project }) {
       {/* Overview */}
       <section>
         <SectionLabel>Overview</SectionLabel>
-        <p className="font-mono text-xs leading-relaxed text-slate-400">
+        <p className="font-mono text-sm leading-relaxed text-slate-400">
           {project.description}
         </p>
       </section>
@@ -243,7 +209,7 @@ function SummaryLayout({ project }: { project: Project }) {
             {project.contributions.map((c, i) => (
               <li key={i} className="flex items-start gap-2">
                 <span className="mt-0.5 shrink-0 font-mono text-[10px] text-teal-500">{'>'}</span>
-                <span className="font-mono text-xs leading-relaxed text-slate-400">{c}</span>
+                <span className="font-mono text-sm leading-relaxed text-slate-400">{c}</span>
               </li>
             ))}
           </ul>
@@ -257,8 +223,8 @@ function SummaryLayout({ project }: { project: Project }) {
           <ul className="space-y-1.5">
             {project.features.map((f, i) => (
               <li key={i} className="flex items-start gap-2">
-                <span className="mt-0.5 shrink-0 font-mono text-[10px] text-slate-600">—</span>
-                <span className="font-mono text-xs leading-relaxed text-slate-400">{f}</span>
+                <span className="mt-0.5 shrink-0 font-mono text-[10px] text-teal-500">{'>'}</span>
+                <span className="font-mono text-sm leading-relaxed text-slate-400">{f}</span>
               </li>
             ))}
           </ul>
@@ -269,7 +235,7 @@ function SummaryLayout({ project }: { project: Project }) {
       {project.challenges && (
         <section>
           <SectionLabel>Challenge</SectionLabel>
-          <p className="font-mono text-xs leading-relaxed text-slate-400">
+          <p className="font-mono text-sm leading-relaxed text-slate-400">
             {project.challenges}
           </p>
         </section>
